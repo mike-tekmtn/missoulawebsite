@@ -4,114 +4,147 @@
   <meta charset='utf-8'/>
   <meta name='viewport' content='width=device-width,initial-scale=1'/>
   <title>Missoula Website Co</title>
-  <link rel='stylesheet' href='styles.css'/>
-</head>
-<body>
-<header class='container nav'>
-  <div class='brand'>Missoula Website Co</div>
-  <nav><a href='services.html'>Services</a><a href='pricing.html'>Pricing</a><a href='contact.html'>Contact</a></nav>
-</header>
-
-<section class='hero'>
-  <div class='container'>
-    <h1>One-Day Websites for Missoula Businesses</h1>
-    <p>Tell us what you need. We’ll assess complexity, confirm feasibility, and move fast.</p>
-    <a class='btn' href='#intake'>Start Your One-Day Intake</a>
-    <a class='btn alt' href='pricing.html'>See Plans</a>
-  </div>
-</section>
-
-<section id='intake' class='section'>
-  <div class='container'>
-    <h2>Website Request Intake</h2>
-    <p class='muted'>Submit this and we’ll review whether it fits one-day delivery.</p>
-    <form id='intakeForm' class='card form-grid'>
-      <label>Business name
-        <input name='businessName' required />
-      </label>
-      <label>Contact name
-        <input name='contactName' required />
-      </label>
-      <label>Email
-        <input name='email' type='email' required />
-      </label>
-      <label>Phone
-        <input name='phone' />
-      </label>
-      <label>Business type
-        <input name='businessType' placeholder='e.g., plumbing, salon, contractor' required />
-      </label>
-      <label>Target launch timeline
-        <select name='timeline'>
-          <option value='one-day'>One day</option>
-          <option value='this-week'>This week</option>
-          <option value='flexible'>Flexible</option>
-        </select>
-      </label>
-      <label>Approx page count
-        <select name='pageCount'>
-          <option value='1-3'>1-3</option>
-          <option value='4-6'>4-6</option>
-          <option value='7-10'>7-10</option>
-          <option value='10+'>10+</option>
-        </select>
-      </label>
-      <label>Need content writing?
-        <select name='copywriting'>
-          <option value='yes'>Yes</option>
-          <option value='no'>No</option>
-        </select>
-      </label>
-      <label class='full'>Features needed (check all that apply)</label>
-      <div class='checks full'>
-        <label><input type='checkbox' name='features' value='contact-form' checked /> Contact form</label>
-        <label><input type='checkbox' name='features' value='booking' /> Booking/scheduling</label>
-        <label><input type='checkbox' name='features' value='payments' /> Payments</label>
-        <label><input type='checkbox' name='features' value='ecommerce' /> E-commerce</label>
-        <label><input type='checkbox' name='features' value='crm' /> CRM integration</label>
-        <label><input type='checkbox' name='features' value='custom-design' /> Fully custom design</label>
-      </div>
-      <label class='full'>Anything else?
-        <textarea name='notes' rows='4' placeholder='Goals, references, required pages, etc.'></textarea>
-      </label>
-      <div class='full'>
-        <button class='btn' type='submit'>Submit Request</button>
-        <span id='statusMsg' class='muted'></span>
-      </div>
-    </form>
-  </div>
-</section>
-
-<footer class='footer'><div class='container'>Serving Missoula-area small businesses • missoulawebsite.com</div></footer>
-
-<script>
-  const form = document.getElementById('intakeForm');
-  const statusMsg = document.getElementById('statusMsg');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    statusMsg.textContent = 'Submitting...';
-
-    const fd = new FormData(form);
-    const features = fd.getAll('features');
-    const payload = Object.fromEntries(fd.entries());
-    payload.features = features;
-
-    const res = await fetch('/api/intake', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-
-    if (!res.ok) {
-      statusMsg.textContent = 'Something went wrong. Please try again.';
-      return;
+  <script src='https://cdn.tailwindcss.com'></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#22d3ee'
+          }
+        }
+      }
     }
+  </script>
+</head>
+<body class='bg-slate-950 text-slate-100'>
+  <header class='max-w-6xl mx-auto px-6 py-5 flex items-center justify-between'>
+    <div class='text-xl font-bold tracking-tight'>Missoula Website Co</div>
+    <nav class='text-sm text-slate-300 space-x-5'>
+      <a class='hover:text-white' href='services.html'>Services</a>
+      <a class='hover:text-white' href='pricing.html'>Pricing</a>
+      <a class='hover:text-white' href='contact.html'>Contact</a>
+    </nav>
+  </header>
 
-    const data = await res.json();
-    statusMsg.textContent = `Submitted. Estimated complexity: ${data.complexity} (${data.feasibility}).`;
-    form.reset();
-  });
-</script>
+  <section class='max-w-6xl mx-auto px-6 py-14'>
+    <div class='rounded-2xl border border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 p-8 md:p-12'>
+      <p class='inline-flex items-center rounded-full border border-cyan-400/40 bg-cyan-400/10 px-3 py-1 text-xs font-semibold text-cyan-300'>One-Day Delivery Focus</p>
+      <h1 class='mt-5 text-4xl md:text-5xl font-bold leading-tight'>One-Day Websites for Missoula Businesses</h1>
+      <p class='mt-4 text-slate-300 max-w-2xl'>Tell us what you need. We’ll score complexity, assess one-day feasibility, and send you a clean recommendation.</p>
+      <div class='mt-8 flex gap-3'>
+        <a class='inline-flex items-center rounded-lg bg-cyan-400 px-4 py-2.5 font-semibold text-slate-900 hover:bg-cyan-300' href='#intake'>Start Intake</a>
+        <a class='inline-flex items-center rounded-lg border border-slate-700 px-4 py-2.5 font-semibold hover:bg-slate-900' href='pricing.html'>See Plans</a>
+      </div>
+    </div>
+  </section>
+
+  <section id='intake' class='max-w-6xl mx-auto px-6 pb-16'>
+    <div class='rounded-2xl border border-slate-800 bg-slate-900/70 p-6 md:p-8'>
+      <h2 class='text-2xl font-bold'>Website Request Intake</h2>
+      <p class='mt-2 text-slate-400'>Submit this and we’ll review if it fits one-day delivery.</p>
+
+      <form id='intakeForm' class='mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm'>
+        <label class='space-y-1'>
+          <span class='text-slate-300'>Business name</span>
+          <input class='w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2' name='businessName' required />
+        </label>
+        <label class='space-y-1'>
+          <span class='text-slate-300'>Contact name</span>
+          <input class='w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2' name='contactName' required />
+        </label>
+        <label class='space-y-1'>
+          <span class='text-slate-300'>Email</span>
+          <input class='w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2' name='email' type='email' required />
+        </label>
+        <label class='space-y-1'>
+          <span class='text-slate-300'>Phone</span>
+          <input class='w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2' name='phone' />
+        </label>
+        <label class='space-y-1'>
+          <span class='text-slate-300'>Business type</span>
+          <input class='w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2' name='businessType' placeholder='e.g., plumbing, salon, contractor' required />
+        </label>
+        <label class='space-y-1'>
+          <span class='text-slate-300'>Target launch timeline</span>
+          <select class='w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2' name='timeline'>
+            <option value='one-day'>One day</option>
+            <option value='this-week'>This week</option>
+            <option value='flexible'>Flexible</option>
+          </select>
+        </label>
+        <label class='space-y-1'>
+          <span class='text-slate-300'>Approx page count</span>
+          <select class='w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2' name='pageCount'>
+            <option value='1-3'>1-3</option>
+            <option value='4-6'>4-6</option>
+            <option value='7-10'>7-10</option>
+            <option value='10+'>10+</option>
+          </select>
+        </label>
+        <label class='space-y-1'>
+          <span class='text-slate-300'>Need content writing?</span>
+          <select class='w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2' name='copywriting'>
+            <option value='yes'>Yes</option>
+            <option value='no'>No</option>
+          </select>
+        </label>
+
+        <div class='md:col-span-2'>
+          <p class='mb-2 text-slate-300'>Features needed</p>
+          <div class='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-slate-300'>
+            <label class='rounded-lg border border-slate-800 p-2'><input class='mr-2' type='checkbox' name='features' value='contact-form' checked />Contact form</label>
+            <label class='rounded-lg border border-slate-800 p-2'><input class='mr-2' type='checkbox' name='features' value='booking' />Booking/scheduling</label>
+            <label class='rounded-lg border border-slate-800 p-2'><input class='mr-2' type='checkbox' name='features' value='payments' />Payments</label>
+            <label class='rounded-lg border border-slate-800 p-2'><input class='mr-2' type='checkbox' name='features' value='ecommerce' />E-commerce</label>
+            <label class='rounded-lg border border-slate-800 p-2'><input class='mr-2' type='checkbox' name='features' value='crm' />CRM integration</label>
+            <label class='rounded-lg border border-slate-800 p-2'><input class='mr-2' type='checkbox' name='features' value='custom-design' />Fully custom design</label>
+          </div>
+        </div>
+
+        <label class='md:col-span-2 space-y-1'>
+          <span class='text-slate-300'>Anything else?</span>
+          <textarea class='w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2' name='notes' rows='4' placeholder='Goals, references, required pages, etc.'></textarea>
+        </label>
+
+        <div class='md:col-span-2 flex items-center gap-3'>
+          <button class='inline-flex items-center rounded-lg bg-cyan-400 px-4 py-2.5 font-semibold text-slate-900 hover:bg-cyan-300' type='submit'>Submit Request</button>
+          <span id='statusMsg' class='text-slate-400'></span>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer class='border-t border-slate-800 py-6 text-center text-sm text-slate-500'>Serving Missoula-area small businesses • missoulawebsite.com</footer>
+
+  <script>
+    const form = document.getElementById('intakeForm');
+    const statusMsg = document.getElementById('statusMsg');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusMsg.textContent = 'Submitting...';
+
+      const fd = new FormData(form);
+      const features = fd.getAll('features');
+      const payload = Object.fromEntries(fd.entries());
+      payload.features = features;
+
+      const res = await fetch('/api/intake', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (!res.ok) {
+        statusMsg.textContent = 'Something went wrong. Please try again.';
+        return;
+      }
+
+      const data = await res.json();
+      statusMsg.textContent = `Submitted. Estimated complexity: ${data.complexity} (${data.feasibility}).`;
+      form.reset();
+    });
+  </script>
 </body>
 </html>
