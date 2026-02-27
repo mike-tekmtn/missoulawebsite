@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8'/>
+  <meta name='viewport' content='width=device-width,initial-scale=1'/>
+  <title>Missoula Website Co</title>
+  <link rel='stylesheet' href='styles.css'/>
+</head>
+<body>
+<header class='container nav'>
+  <div class='brand'>Missoula Website Co</div>
+  <nav><a href='services.html'>Services</a><a href='pricing.html'>Pricing</a><a href='contact.html'>Contact</a></nav>
+</header>
+
+<section class='hero'>
+  <div class='container'>
+    <h1>One-Day Websites for Missoula Businesses</h1>
+    <p>Tell us what you need. We’ll assess complexity, confirm feasibility, and move fast.</p>
+    <a class='btn' href='#intake'>Start Your One-Day Intake</a>
+    <a class='btn alt' href='pricing.html'>See Plans</a>
+  </div>
+</section>
+
+<section id='intake' class='section'>
+  <div class='container'>
+    <h2>Website Request Intake</h2>
+    <p class='muted'>Submit this and we’ll review whether it fits one-day delivery.</p>
+    <form id='intakeForm' class='card form-grid'>
+      <label>Business name
+        <input name='businessName' required />
+      </label>
+      <label>Contact name
+        <input name='contactName' required />
+      </label>
+      <label>Email
+        <input name='email' type='email' required />
+      </label>
+      <label>Phone
+        <input name='phone' />
+      </label>
+      <label>Business type
+        <input name='businessType' placeholder='e.g., plumbing, salon, contractor' required />
+      </label>
+      <label>Target launch timeline
+        <select name='timeline'>
+          <option value='one-day'>One day</option>
+          <option value='this-week'>This week</option>
+          <option value='flexible'>Flexible</option>
+        </select>
+      </label>
+      <label>Approx page count
+        <select name='pageCount'>
+          <option value='1-3'>1-3</option>
+          <option value='4-6'>4-6</option>
+          <option value='7-10'>7-10</option>
+          <option value='10+'>10+</option>
+        </select>
+      </label>
+      <label>Need content writing?
+        <select name='copywriting'>
+          <option value='yes'>Yes</option>
+          <option value='no'>No</option>
+        </select>
+      </label>
+      <label class='full'>Features needed (check all that apply)</label>
+      <div class='checks full'>
+        <label><input type='checkbox' name='features' value='contact-form' checked /> Contact form</label>
+        <label><input type='checkbox' name='features' value='booking' /> Booking/scheduling</label>
+        <label><input type='checkbox' name='features' value='payments' /> Payments</label>
+        <label><input type='checkbox' name='features' value='ecommerce' /> E-commerce</label>
+        <label><input type='checkbox' name='features' value='crm' /> CRM integration</label>
+        <label><input type='checkbox' name='features' value='custom-design' /> Fully custom design</label>
+      </div>
+      <label class='full'>Anything else?
+        <textarea name='notes' rows='4' placeholder='Goals, references, required pages, etc.'></textarea>
+      </label>
+      <div class='full'>
+        <button class='btn' type='submit'>Submit Request</button>
+        <span id='statusMsg' class='muted'></span>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer class='footer'><div class='container'>Serving Missoula-area small businesses • missoulawebsite.com</div></footer>
+
+<script>
+  const form = document.getElementById('intakeForm');
+  const statusMsg = document.getElementById('statusMsg');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    statusMsg.textContent = 'Submitting...';
+
+    const fd = new FormData(form);
+    const features = fd.getAll('features');
+    const payload = Object.fromEntries(fd.entries());
+    payload.features = features;
+
+    const res = await fetch('/api/intake', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (!res.ok) {
+      statusMsg.textContent = 'Something went wrong. Please try again.';
+      return;
+    }
+
+    const data = await res.json();
+    statusMsg.textContent = `Submitted. Estimated complexity: ${data.complexity} (${data.feasibility}).`;
+    form.reset();
+  });
+</script>
+</body>
+</html>
