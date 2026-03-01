@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Templates v3 • Offer-Funnel Landing</title>
+  <meta name="description" content="Offer-funnel landing archetype for local services: one clear offer, staged trust, and a low-friction conversion flow." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --ink: #0f172a;
+      --muted: #475569;
+      --line: #cfd8ea;
+      --card: #ffffff;
+      --accent: #1d4ed8;
+      --accent-dark: #1e3a8a;
+      --accent-soft: #dbeafe;
+      --ok: #0f766e;
+      --ok-soft: #ccfbf1;
+      --danger: #9f1239;
+      --danger-soft: #ffe4e6;
+      --radius: 16px;
+      --shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+      --s-1: 4px;
+      --s-2: 8px;
+      --s-3: 12px;
+      --s-4: 16px;
+      --s-5: 24px;
+      --s-6: 32px;
+      --s-7: 40px;
+      --s-8: 48px;
+      --s-9: 64px;
+      --s-10: 80px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(900px 340px at 78% -12%, #dbeafe 0%, transparent 60%),
+        var(--bg);
+      line-height: 1.58;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .skip-link:focus {
+      left: var(--s-4);
+      top: var(--s-4);
+      width: auto;
+      height: auto;
+      padding: .7rem 1rem;
+      border-radius: 10px;
+      background: #fff;
+      border: 2px solid var(--accent-dark);
+      z-index: 1000;
+    }
+
+    .shell {
+      width: min(1120px, calc(100% - 2rem));
+      margin-inline: auto;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--s-4);
+      flex-wrap: wrap;
+      padding: var(--s-5) 0 var(--s-4);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      font-weight: 700;
+      letter-spacing: .01em;
+    }
+
+    .brand-mark {
+      width: 14px;
+      height: 14px;
+      border-radius: 4px;
+      background: linear-gradient(135deg, var(--accent), #60a5fa);
+      box-shadow: 0 0 0 4px rgba(29, 78, 216, .16);
+      flex-shrink: 0;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--s-2);
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #1e293b;
+      font-weight: 600;
+      font-size: .92rem;
+      padding: .52rem .7rem;
+      border-radius: 10px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .nav a:hover { background: #e7edf9; }
+
+    .nav .phone-pill {
+      border: 1px solid #b8c8ea;
+      background: #fff;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+      gap: var(--s-5);
+      align-items: start;
+      padding: var(--s-6) 0 var(--s-7);
+    }
+
+    .hero-main {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(20px, 3vw, 32px);
+    }
+
+    .eyebrow {
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-size: .78rem;
+      font-weight: 800;
+      color: #1e40af;
+    }
+
+    h1 {
+      margin: var(--s-4) 0 var(--s-4);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      max-width: 16ch;
+    }
+
+    .subcopy {
+      margin: 0;
+      color: var(--muted);
+      max-width: 58ch;
+      font-size: 1.03rem;
+    }
+
+    .cta-row {
+      margin-top: var(--s-5);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--s-3);
+    }
+
+    .btn {
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: .76rem 1rem;
+      transition: .16s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(180deg, var(--accent), var(--accent-dark));
+    }
+
+    .btn-primary:hover { transform: translateY(-1px); }
+
+    .btn-secondary {
+      color: #0f172a;
+      background: #fff;
+      border-color: #b8c8ea;
+    }
+
+    .next-step {
+      margin-top: var(--s-4);
+      display: inline-flex;
+      gap: .55rem;
+      align-items: center;
+      font-size: .9rem;
+      font-weight: 600;
+      color: #0f3f8f;
+      background: #eaf1ff;
+      border: 1px solid #c8dafb;
+      padding: .5rem .72rem;
+      border-radius: 999px;
+    }
+
+    .hero-side {
+      display: grid;
+      gap: var(--s-4);
+    }
+
+    .panel {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: var(--s-5);
+      box-shadow: var(--shadow);
+    }
+
+    .panel h2,
+    .panel h3,
+    .panel p { margin: 0; }
+
+    .panel h2,
+    .panel h3 {
+      line-height: 1.25;
+      margin-top: .2rem;
+    }
+
+    .kicker {
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .74rem;
+      font-weight: 800;
+      color: #334155;
+    }
+
+    .quick-points {
+      list-style: none;
+      margin: var(--s-4) 0 0;
+      padding: 0;
+      display: grid;
+      gap: var(--s-2);
+      color: #1e293b;
+      font-size: .95rem;
+    }
+
+    .quick-points li::before {
+      content: "✓ ";
+      color: var(--ok);
+      font-weight: 800;
+    }
+
+    .trust-strip {
+      padding: 0 0 var(--s-7);
+    }
+
+    .trust-grid {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--s-3);
+    }
+
+    .trust-grid li {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: .8rem .85rem;
+      font-weight: 600;
+      font-size: .9rem;
+      color: #1f2937;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+      gap: var(--s-5);
+      padding-bottom: var(--s-9);
+    }
+
+    .stack {
+      display: grid;
+      gap: var(--s-5);
+      align-content: start;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(18px, 2.4vw, 26px);
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: clamp(1.3rem, 2.5vw, 2rem);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+
+    .card > p { margin: var(--s-3) 0 0; color: var(--muted); }
+
+    .steps {
+      list-style: none;
+      padding: 0;
+      margin: var(--s-4) 0 0;
+      display: grid;
+      gap: var(--s-3);
+      counter-reset: funnel-step;
+    }
+
+    .steps li {
+      counter-increment: funnel-step;
+      border: 1px solid #d8e2f4;
+      background: #f8fbff;
+      border-radius: 12px;
+      padding: .85rem .92rem;
+    }
+
+    .steps li strong {
+      display: block;
+      font-size: .95rem;
+      margin-bottom: .25rem;
+    }
+
+    .steps li strong::before {
+      content: "Step " counter(funnel-step) " • ";
+      color: #1e3a8a;
+    }
+
+    .steps li span { color: #334155; font-size: .93rem; }
+
+    .offer-list {
+      list-style: none;
+      margin: var(--s-4) 0 0;
+      padding: 0;
+      display: grid;
+      gap: var(--s-2);
+    }
+
+    .offer-list li {
+      border-radius: 10px;
+      border: 1px solid;
+      padding: .58rem .7rem;
+      font-size: .93rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .offer-list li.included {
+      background: var(--ok-soft);
+      border-color: #99f6e4;
+      color: #0f3f3b;
+    }
+
+    .offer-list li.excluded {
+      background: var(--danger-soft);
+      border-color: #fecdd3;
+      color: #7f1d1d;
+    }
+
+    .faq details {
+      border: 1px solid #d8e2f4;
+      border-radius: 10px;
+      padding: .72rem .8rem;
+      background: #fbfdff;
+    }
+
+    .faq details + details { margin-top: .55rem; }
+
+    .faq summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    .faq p {
+      margin: .55rem 0 0;
+      color: #334155;
+      font-size: .95rem;
+    }
+
+    .form {
+      margin-top: var(--s-4);
+      display: grid;
+      gap: var(--s-3);
+    }
+
+    .field {
+      display: grid;
+      gap: .36rem;
+    }
+
+    label {
+      font-size: .9rem;
+      color: #1f2937;
+      font-weight: 600;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      min-height: 44px;
+      border: 1px solid #b8c8ea;
+      border-radius: 10px;
+      padding: .7rem .78rem;
+      font: inherit;
+      color: #0f172a;
+      background: #fff;
+    }
+
+    textarea { min-height: 92px; resize: vertical; }
+
+    .submit {
+      margin-top: .2rem;
+      border: 0;
+      border-radius: 12px;
+      min-height: 46px;
+      background: linear-gradient(180deg, var(--accent), var(--accent-dark));
+      color: #fff;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      padding: .72rem .95rem;
+    }
+
+    .form-note {
+      margin: 0;
+      font-size: .82rem;
+      color: #64748b;
+    }
+
+    .aside-list {
+      list-style: none;
+      padding: 0;
+      margin: var(--s-3) 0 0;
+      display: grid;
+      gap: .5rem;
+      color: #334155;
+      font-size: .92rem;
+    }
+
+    .aside-list li::before {
+      content: "• ";
+      color: #1d4ed8;
+      font-weight: 900;
+    }
+
+    .footer {
+      border-top: 1px solid #d9e2f5;
+      padding: var(--s-5) 0;
+      color: #475569;
+      font-size: .88rem;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid #fde047;
+      outline-offset: 2px;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 1023px) {
+      .hero,
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: var(--s-5);
+      }
+
+      .trust-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .shell { width: calc(100% - 1rem); }
+      .topbar { padding-top: var(--s-4); }
+      .trust-grid { grid-template-columns: 1fr; }
+      .cta-row .btn { width: 100%; }
+      .hero-main,
+      .panel,
+      .card { padding: 16px; }
+      .nav { width: 100%; }
+      .nav .phone-pill { margin-left: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header>
+    <div class="shell topbar">
+      <div class="brand" aria-label="Business name">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Five Valleys Home Services</span>
+      </div>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#how-it-works">How It Works</a>
+        <a href="#offer">Offer Details</a>
+        <a href="#faq">FAQ</a>
+        <a href="tel:+14065550177" class="phone-pill" aria-label="Call Five Valleys Home Services at 406 555 0177">Call (406) 555-0177</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="shell hero" aria-labelledby="hero-title">
+      <div class="hero-main">
+        <p class="eyebrow">Missoula Furnace &amp; HVAC Service</p>
+        <h1 id="hero-title">Claim a Free Heating Safety Check + Same-Day Estimate</h1>
+        <p class="subcopy">Get a licensed local technician, clear next steps, and an upfront quote before any repair or replacement work starts.</p>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#conversion">Claim My Free Check</a>
+          <a class="btn btn-secondary" href="tel:+14065550177">Talk to a Technician</a>
+        </div>
+
+        <p class="next-step"><span aria-hidden="true">●</span> Step 1 of 3: Tell us your ZIP and issue</p>
+      </div>
+
+      <aside class="hero-side" aria-label="Offer reassurance">
+        <section class="panel">
+          <p class="kicker">Why homeowners choose this offer</p>
+          <h2>Low-friction start, no pressure consultation</h2>
+          <ul class="quick-points">
+            <li>No service fee when estimate is approved</li>
+            <li>Clear repair vs replace options in writing</li>
+            <li>Weekend appointments available</li>
+            <li>Most callbacks within 15 minutes</li>
+          </ul>
+        </section>
+
+        <section class="panel">
+          <p class="kicker">What happens after you submit</p>
+          <h3>Confirm slot → Technician visit → Written options</h3>
+          <p style="margin-top:12px;color:#475569;">You’ll receive a confirmation call and 2-hour arrival window. No surprise work begins without your approval.</p>
+        </section>
+      </aside>
+    </section>
+
+    <section class="shell trust-strip" aria-label="Trust indicators">
+      <ul class="trust-grid">
+        <li>4.9★ average from 312 local reviews</li>
+        <li>Licensed &amp; fully insured in Montana</li>
+        <li>2-year workmanship guarantee</li>
+        <li>Serving Missoula, Lolo, Bonner, East Missoula</li>
+      </ul>
+    </section>
+
+    <section class="shell main-grid">
+      <div class="stack">
+        <section class="card" id="how-it-works" aria-labelledby="steps-title">
+          <p class="kicker">How It Works</p>
+          <h2 id="steps-title">A simple 3-step offer funnel</h2>
+          <ol class="steps">
+            <li>
+              <strong>Share your home details</strong>
+              <span>Tell us your ZIP, system symptoms, and best callback number.</span>
+            </li>
+            <li>
+              <strong>Get your visit window</strong>
+              <span>We confirm availability and match you with a licensed local technician.</span>
+            </li>
+            <li>
+              <strong>Review options and decide</strong>
+              <span>You get written recommendations and pricing before any paid work begins.</span>
+            </li>
+          </ol>
+        </section>
+
+        <section class="card" id="offer" aria-labelledby="offer-title">
+          <p class="kicker">Offer Details</p>
+          <h2 id="offer-title">What’s included in the free heating safety check</h2>
+          <p>Designed for homeowners comparing repair vs replacement. You get a clear assessment and options without committing onsite.</p>
+
+          <ul class="offer-list" aria-label="Included and excluded items">
+            <li class="included"><span aria-hidden="true">✓</span> Multi-point heating system safety inspection</li>
+            <li class="included"><span aria-hidden="true">✓</span> Performance check on thermostat and airflow</li>
+            <li class="included"><span aria-hidden="true">✓</span> Written estimate with recommended next steps</li>
+            <li class="included"><span aria-hidden="true">✓</span> Financing options if replacement is needed</li>
+            <li class="excluded"><span aria-hidden="true">✕</span> Does not include parts/labor for approved repairs</li>
+          </ul>
+
+          <div class="cta-row" style="margin-top:16px;">
+            <a class="btn btn-primary" href="#conversion">Reserve My Visit Window</a>
+          </div>
+        </section>
+
+        <section class="card faq" id="faq" aria-labelledby="faq-title">
+          <p class="kicker">Common Objections</p>
+          <h2 id="faq-title">Quick answers before you book</h2>
+
+          <details>
+            <summary>Do I have to commit to repairs during the visit?</summary>
+            <p>No. You receive written options first. Work starts only after your approval.</p>
+          </details>
+          <details>
+            <summary>How fast can someone get here?</summary>
+            <p>Most calls are scheduled same day or next day, depending on current route load.</p>
+          </details>
+          <details>
+            <summary>Can I use this offer if my system still runs?</summary>
+            <p>Yes. The check is built for “still working but unreliable” systems and pre-season tune-up decisions.</p>
+          </details>
+        </section>
+      </div>
+
+      <aside class="stack" aria-label="Guarantee and conversion panel">
+        <section class="card">
+          <p class="kicker">Guarantee</p>
+          <h2>Clear recommendations, no pressure sales script</h2>
+          <ul class="aside-list">
+            <li>Upfront explanation of findings in plain language</li>
+            <li>No extra work without your confirmation</li>
+            <li>Install/repair options documented side-by-side</li>
+            <li>Work area left clean after service visits</li>
+          </ul>
+        </section>
+
+        <section class="card" id="conversion" aria-labelledby="conversion-title">
+          <p class="kicker">Step 3 • Book Your Slot</p>
+          <h2 id="conversion-title">Claim your free check</h2>
+          <p>Submit this short form and we’ll call to confirm your appointment window.</p>
+
+          <form class="form" action="#" method="post" aria-label="Offer claim form">
+            <div class="field">
+              <label for="full-name">Full name</label>
+              <input id="full-name" name="fullName" type="text" autocomplete="name" required placeholder="Your name" />
+            </div>
+
+            <div class="field">
+              <label for="phone">Phone number</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="(406) 555-0000" />
+            </div>
+
+            <div class="field">
+              <label for="zip">ZIP code</label>
+              <input id="zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" required placeholder="59801" />
+            </div>
+
+            <div class="field">
+              <label for="need">What are you noticing?</label>
+              <textarea id="need" name="serviceNeed" placeholder="Example: furnace cycles on/off, uneven heat upstairs"></textarea>
+            </div>
+
+            <button class="submit" type="submit">Get My Confirmation Call</button>
+            <p class="form-note">Prefer phone? Call <a href="tel:+14065550177">(406) 555-0177</a>. We do not sell your data.</p>
+          </form>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">Template v3 • Offer-Funnel Landing • Conversion-first local service pattern</div>
+  </footer>
+</body>
+</html>
