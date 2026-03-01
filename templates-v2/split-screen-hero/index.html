@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8'/>
+  <meta name='viewport' content='width=device-width,initial-scale=1'/>
+  <script src='https://cdn.tailwindcss.com'></script>
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+  <link href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap' rel='stylesheet'>
+  <title>Split Screen Hero</title>
+  <style>body{font-family:Montserrat,system-ui,sans-serif}</style>
+</head>
+<body class='bg-slate-950 text-slate-100'>
+  <main class='min-h-screen grid lg:grid-cols-2'>
+    <section class='p-8 md:p-14 flex flex-col justify-center bg-slate-950'>
+      <p class='text-cyan-300 font-semibold tracking-widest text-xs uppercase'>Split-Screen Archetype</p>
+      <h1 class='text-4xl md:text-6xl font-extrabold leading-tight mt-3'>Built For Fast, Local Lead Generation</h1>
+      <p class='mt-5 text-slate-300 text-lg'>Content-first left panel with immediate CTA. Right panel carries emotional visual context.</p>
+      <div class='mt-8 flex flex-wrap gap-3'>
+        <button class='rounded-lg bg-cyan-400 text-slate-900 font-bold px-5 py-3'>Get Quote</button>
+        <button class='rounded-lg border border-slate-700 px-5 py-3'>View Services</button>
+      </div>
+    </section>
+    <aside class='relative min-h-[360px] lg:min-h-screen'>
+      <img src='https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=80' class='absolute inset-0 w-full h-full object-cover'/>
+      <div class='absolute inset-0 bg-slate-950/35'></div>
+      <div class='absolute bottom-6 left-6 right-6 bg-slate-900/85 border border-slate-700 rounded-xl p-4'>
+        <strong>Use case:</strong> high-intent service businesses that need clear conversion flow.
+      </div>
+    </aside>
+  </main>
+</body>
+</html>

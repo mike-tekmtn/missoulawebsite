@@ -1,0 +1,22 @@
+{
+  "intakeId": "intake_1772325688071_wb00ob",
+  "createdAt": "2026-03-01T00:41:28.071Z",
+  "complexity": "medium",
+  "feasibility": "great fit for one-day build",
+  "payload": {
+    "businessName": "Packet test LLC",
+    "contactName": "Mike J",
+    "email": "mike@example.com",
+    "phone": "406-555-1212",
+    "businessType": "contractor",
+    "timeline": "this-week",
+    "pageCount": "7-10",
+    "copywriting": "yes",
+    "features": [
+      "contact-form",
+      "booking",
+      "custom-design"
+    ],
+    "notes": "Need modern dark style with trust badges, service area pages, and quote request flow."
+  }
+}
