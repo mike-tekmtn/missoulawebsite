@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Editorial Story Archetype | Local Service Homepage Template</title>
+  <meta name="description" content="Conversion-focused editorial story homepage for local service businesses. Built for trust, readability, and clear calls to action." />
+  <style>
+    :root {
+      --canvas: #f7f4ee;
+      --surface: #fffdf9;
+      --ink: #1e1c19;
+      --muted: #5b554f;
+      --rule: #d7cec3;
+      --accent: #c14a2c;
+      --accent-dark: #7f2f1c;
+      --chip: #eee5d8;
+
+      --s-1: 4px;
+      --s-2: 8px;
+      --s-3: 12px;
+      --s-4: 16px;
+      --s-5: 24px;
+      --s-6: 32px;
+      --s-7: 40px;
+      --s-8: 48px;
+      --s-9: 64px;
+      --s-10: 80px;
+      --s-11: 96px;
+
+      --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      --font-body: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+      --container: 1200px;
+      --measure: 68ch;
+      --focus: 3px solid #1d5d8e;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--canvas);
+      color: var(--ink);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img { max-width: 100%; display: block; height: auto; }
+    a { color: inherit; }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      background: #fff;
+      color: #000;
+      padding: var(--s-3) var(--s-4);
+      z-index: 100;
+    }
+
+    .skip-link:focus-visible {
+      left: var(--s-3);
+      top: var(--s-3);
+      width: auto;
+      height: auto;
+      outline: var(--focus);
+    }
+
+    :focus-visible {
+      outline: var(--focus);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    .container {
+      width: min(100%, var(--container));
+      margin-inline: auto;
+      padding-inline: var(--s-4);
+    }
+
+    .site-header {
+      border-bottom: 1px solid var(--rule);
+      background: linear-gradient(to bottom, #faf7f2 0%, #f5f0e7 100%);
+    }
+
+    .topbar {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: var(--s-3);
+      min-height: 72px;
+      padding-block: var(--s-3);
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.01em;
+      line-height: 1.3;
+    }
+
+    .brand small {
+      color: var(--muted);
+      font-weight: 500;
+      margin-left: 0;
+      display: block;
+      margin-top: 2px;
+      font-size: 0.88rem;
+    }
+
+    .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--s-2);
+      font-size: 0.9rem;
+    }
+
+    .nav-list a {
+      text-decoration: none;
+      color: var(--muted);
+      padding: var(--s-2) var(--s-3);
+      border-radius: 999px;
+    }
+
+    .nav-list a:hover { background: #efe7dc; color: var(--ink); }
+
+    .masthead {
+      padding-block: var(--s-8) var(--s-9);
+      border-bottom: 1px solid var(--rule);
+      background: radial-gradient(circle at top right, #f1e7d7 0%, transparent 45%), var(--surface);
+    }
+
+    .kicker {
+      display: inline-block;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: var(--s-3);
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5.2vw, 4.5rem);
+      line-height: 1.07;
+      letter-spacing: -0.01em;
+      margin: 0;
+      max-width: 14.5ch;
+    }
+
+    .deck {
+      max-width: var(--measure);
+      margin-top: var(--s-4);
+      color: #2c2823;
+      font-size: clamp(1rem, 1.2vw, 1.12rem);
+    }
+
+    .cred-line {
+      margin-top: var(--s-4);
+      font-size: 0.92rem;
+      color: var(--muted);
+      border-left: 3px solid #cfbca4;
+      padding-left: var(--s-3);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--s-3);
+      margin-top: var(--s-5);
+      align-items: center;
+    }
+
+    .btn {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 var(--s-5);
+      border-radius: 999px;
+      text-decoration: none;
+      border: 1px solid transparent;
+      font-weight: 700;
+      font-size: 0.98rem;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover { background: var(--accent-dark); }
+
+    .btn-secondary {
+      color: var(--ink);
+      border-color: #bba892;
+      background: transparent;
+    }
+
+    .btn-secondary:hover { background: #f0e8dc; }
+
+    .hero-media {
+      margin-top: var(--s-7);
+      border: 1px solid var(--rule);
+      background: #ede4d7;
+      border-radius: var(--s-2);
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+    }
+
+    .hero-media img { width: 100%; height: 100%; object-fit: cover; }
+
+    .trust-strip {
+      border-bottom: 1px solid var(--rule);
+      background: #f4ede2;
+      padding-block: var(--s-5);
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      gap: var(--s-3);
+    }
+
+    .trust-item {
+      background: var(--chip);
+      border: 1px solid #d9c9b5;
+      border-radius: var(--s-2);
+      padding: var(--s-3) var(--s-4);
+    }
+
+    .trust-item strong {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: var(--s-1);
+    }
+
+    .trust-item span { color: var(--muted); font-size: 0.88rem; }
+
+    main {
+      padding-block: var(--s-8) var(--s-9);
+    }
+
+    .chapter {
+      padding-block: var(--s-8);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .chapter-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--s-6);
+      align-items: start;
+    }
+
+    .chapter-label {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-2);
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: var(--s-3);
+    }
+
+    .chapter-label::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: #ab8f70;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.45rem, 2.2vw, 2.2rem);
+      line-height: 1.2;
+      margin: 0;
+      max-width: 24ch;
+    }
+
+    .chapter p {
+      max-width: var(--measure);
+      margin: var(--s-4) 0 0;
+      color: #2f2a25;
+    }
+
+    .proof {
+      margin-top: var(--s-5);
+      padding: var(--s-4);
+      border-left: 4px solid var(--accent);
+      background: #f8f2e9;
+      font-weight: 600;
+      max-width: 60ch;
+    }
+
+    .rail {
+      background: #f6efe4;
+      border: 1px solid #ddcdb8;
+      border-radius: var(--s-2);
+      padding: var(--s-4);
+    }
+
+    .rail h3 {
+      margin: 0;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    .rail ul {
+      margin: var(--s-3) 0 0;
+      padding-left: var(--s-4);
+    }
+
+    .rail li { margin-top: var(--s-2); }
+
+    .mid-cta,
+    .final-cta {
+      padding: var(--s-8);
+      border: 1px solid #d7c7b2;
+      background: #f3ebde;
+      margin-top: var(--s-8);
+      border-radius: var(--s-2);
+    }
+
+    .mid-cta h2,
+    .final-cta h2 { max-width: 28ch; }
+
+    .mid-cta p,
+    .final-cta p {
+      margin-top: var(--s-3);
+      max-width: 58ch;
+      color: #2f2a25;
+    }
+
+    .service-area {
+      margin-top: var(--s-8);
+      padding: var(--s-6);
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: var(--s-2);
+    }
+
+    .area-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--s-2);
+      list-style: none;
+      margin: var(--s-4) 0 0;
+      padding: 0;
+    }
+
+    .area-list li {
+      background: #ece2d3;
+      border: 1px solid #d5c1a9;
+      border-radius: 999px;
+      padding: var(--s-2) var(--s-3);
+      font-size: 0.9rem;
+    }
+
+    .faq {
+      margin-top: var(--s-8);
+      border-top: 1px solid var(--rule);
+      padding-top: var(--s-7);
+    }
+
+    .faq details {
+      border-bottom: 1px solid var(--rule);
+      padding: var(--s-4) 0;
+    }
+
+    .faq summary {
+      font-weight: 700;
+      cursor: pointer;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+
+    .faq p {
+      margin: var(--s-2) 0 0;
+      color: #352f29;
+      max-width: 65ch;
+    }
+
+    .site-footer {
+      margin-top: var(--s-9);
+      border-top: 1px solid var(--rule);
+      padding: var(--s-6) 0 var(--s-8);
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (min-width: 768px) {
+      .container { padding-inline: var(--s-5); }
+      .topbar {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--s-4);
+        padding-block: 0;
+      }
+      .brand small {
+        display: inline;
+        margin-left: var(--s-2);
+        margin-top: 0;
+        font-size: inherit;
+      }
+      .nav-list {
+        gap: var(--s-3);
+        font-size: 0.95rem;
+      }
+      .trust-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (min-width: 1024px) {
+      .container { padding-inline: var(--s-6); }
+      .chapter-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+      }
+      .chapter-main { grid-column: 1 / span 8; }
+      .rail { grid-column: 9 / span 4; position: sticky; top: var(--s-6); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+
+<style id='v4-reveal-style'>
+[data-reveal]{opacity:0;transform:translateY(14px);transition:opacity .42s ease, transform .55s cubic-bezier(.2,.8,.2,1)}
+[data-reveal].is-visible{opacity:1;transform:translateY(0)}
+</style>
+
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container topbar">
+      <div class="brand">North Valley Exteriors <small>Missoula, MT</small></div>
+      <nav aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="#story">Our Story</a></li>
+          <li><a href="#service-area">Service Area</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="tel:+14065550148">Call (406) 555-0148</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="masthead" aria-labelledby="story-headline">
+    <div class="container">
+      <span class="kicker">Roofing &amp; Exterior Repair · Missoula County</span>
+      <h1 id="story-headline">When storms hit, you need a crew that explains every step before lifting a single shingle.</h1>
+      <p class="deck">We built this company for homeowners who want honest assessments, photo-backed scope notes, and repairs that hold up through Montana winters.</p>
+      <p class="cred-line">Licensed &amp; insured in Montana • Family-owned since 2008 • 10-year workmanship warranty</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#estimate">Get My On-Site Estimate</a>
+        <a class="btn btn-secondary" href="tel:+14065550148">Talk to a Missoula Technician</a>
+      </div>
+      <figure class="hero-media">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80" alt="Local service team discussing project plan with a homeowner" width="1400" height="788" fetchpriority="high" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="trust-strip" aria-label="Trust markers">
+    <div class="container trust-grid">
+      <div class="trust-item">
+        <strong>4.9★ Average Rating</strong>
+        <span>From 312 verified local reviews</span>
+      </div>
+      <div class="trust-item">
+        <strong>Licensed + Fully Insured</strong>
+        <span>Montana registration current through 2026</span>
+      </div>
+      <div class="trust-item">
+        <strong>24-Hour Storm Response</strong>
+        <span>Emergency tarping across Missoula Valley</span>
+      </div>
+    </div>
+  </section>
+
+  <main id="main-content" class="container">
+    <section id="story" class="chapter" aria-labelledby="chapter-01-title">
+      <div class="chapter-grid">
+        <div class="chapter-main">
+          <div class="chapter-label">Chapter 01</div>
+          <h2 id="chapter-01-title">The local problem isn’t just leaks. It’s uncertainty after every freeze-thaw cycle.</h2>
+          <p>Most homeowners call us after seeing a ceiling stain, but the real issue often starts months earlier—ice dams, flashing fatigue, and wind-lifted shingles that are hard to spot from the ground.</p>
+          <p>By the time spring rain arrives, small vulnerabilities become expensive interior damage. We start with plain-language diagnostics so you know exactly what is urgent and what can wait.</p>
+          <div class="proof">Last winter, 63% of our Missoula emergency calls came from homes that looked "fine" from curb view but had hidden flashing failures.</div>
+        </div>
+        <aside class="rail" aria-label="Context and field notes">
+          <h3>Field notes</h3>
+          <ul>
+            <li>Thermal camera scan included on full inspections</li>
+            <li>Photo report delivered within 24 hours</li>
+            <li>No-pressure scope walkthrough before quote approval</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="chapter" aria-labelledby="chapter-02-title">
+      <div class="chapter-grid">
+        <div class="chapter-main">
+          <div class="chapter-label">Chapter 02</div>
+          <h2 id="chapter-02-title">Our method is transparent: inspect, document, prioritize, then repair in phases.</h2>
+          <p>Every project begins with a roofline and envelope inspection, followed by an annotated scope that separates immediate protection from longer-term upgrades. You see what we see, including close-up photos and material notes.</p>
+          <p>Then we build the plan around weather windows and your budget. If insurance is involved, we provide line-item documentation your adjuster can read without translation.</p>
+          <div class="proof">Average turnaround: 1.8 business days from inspection to written estimate, with same-day emergency stabilization when active leaks are present.</div>
+        </div>
+        <aside class="rail" aria-label="Process checkpoints">
+          <h3>Process checkpoints</h3>
+          <ul>
+            <li>Documented moisture readings at risk zones</li>
+            <li>Material options with lifespan tradeoffs</li>
+            <li>Daily progress updates by text or email</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="estimate" class="mid-cta" aria-labelledby="mid-cta-title">
+      <h2 id="mid-cta-title">Get clear answers before committing to a full replacement.</h2>
+      <p>Book a no-obligation on-site estimate and receive a prioritized scope, photo evidence, and practical timeline tailored to your property.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:+14065550148">Call a Missoula Roofing Specialist</a>
+      </div>
+    </section>
+
+    <section class="chapter" aria-labelledby="chapter-03-title">
+      <div class="chapter-grid">
+        <div class="chapter-main">
+          <div class="chapter-label">Chapter 03</div>
+          <h2 id="chapter-03-title">Outcomes that matter: fewer callbacks, cleaner job sites, and repairs that survive real winters.</h2>
+          <p>Our crews are trained to protect landscaping, maintain tidy staging areas, and leave each site safer than we found it. That discipline shows up in long-term performance and in how often clients refer neighbors.</p>
+          <p>One recent Target Range homeowner told us, “You were the first contractor who explained the why, not just the price.” That level of clarity is what we aim to deliver every day.</p>
+          <div class="proof">In the past 24 months, 91% of projects were completed within the original timeline window, and warranty callbacks remained under 2%.</div>
+        </div>
+        <aside class="rail" aria-label="Proof points and guarantee">
+          <h3>Proof points</h3>
+          <ul>
+            <li>5-year labor guarantee on repairs</li>
+            <li>10-year workmanship coverage on replacements</li>
+            <li>Documented closeout checklist with photos</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="service-area" class="service-area" aria-labelledby="service-area-title">
+      <h2 id="service-area-title">Service area across Missoula County</h2>
+      <p>Fast dispatch and regular project scheduling in neighborhoods and nearby communities where weather exposure varies block by block.</p>
+      <ul class="area-list" aria-label="Primary service areas">
+        <li>Missoula</li>
+        <li>Target Range</li>
+        <li>Orchard Homes</li>
+        <li>Frenchtown</li>
+        <li>Bonner-West Riverside</li>
+        <li>Lolo</li>
+      </ul>
+    </section>
+
+    <section id="faq" class="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Frequently asked questions</h2>
+      <details>
+        <summary>How quickly can you inspect a leak after a storm?</summary>
+        <p>For active leaks, we prioritize same-day or next-day stabilization in most Missoula neighborhoods, followed by a full documented inspection as soon as conditions are safe.</p>
+      </details>
+      <details>
+        <summary>Do you help with insurance documentation?</summary>
+        <p>Yes. We provide photo sets, line-item notes, and scope details that align with adjuster workflows, so you can make decisions with fewer back-and-forth delays.</p>
+      </details>
+      <details>
+        <summary>Can we repair only damaged sections instead of replacing everything?</summary>
+        <p>Often yes. We separate urgent repairs from optional upgrades and explain lifespan tradeoffs, so you can choose a phased plan that fits your timeline and budget.</p>
+      </details>
+    </section>
+
+    <section class="final-cta" aria-labelledby="final-cta-title">
+      <h2 id="final-cta-title">Ready for a roofing plan you can actually trust?</h2>
+      <p>Tell us what you’re seeing, and we’ll map next steps with clear priorities—not sales pressure.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:+14065550148">Schedule My Missoula Estimate</a>
+        <a class="btn btn-secondary" href="#story">Review Our Process Again</a>
+      </div>
+    </section>
+  
+  <section class='section' data-reveal>
+    <article class='card'>
+      <p class='badge'>Case Study</p>
+      <h2 style='margin:8px 0 0;font-size:1.8rem'>Local Results Snapshot</h2>
+      <p class='muted' style='margin-top:10px'>A recent client improved qualified lead volume after clarifying service pages, tightening CTAs, and improving mobile speed.</p>
+      <ul class='muted' style='margin-top:10px'>
+        <li>• +38% form submissions in 60 days</li>
+        <li>• -27% bounce rate on mobile</li>
+        <li>• Higher quality calls from service-area pages</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class='section grid2'>
+    <article class='card' data-reveal data-delay='60'>
+      <p class='badge'>Testimonials</p>
+      <h3 style='margin:8px 0 0'>“Clear process and fast turnaround.”</h3>
+      <p class='muted' style='margin-top:8px'>“We finally have a site that explains what we do and gets real calls.”</p>
+      <p class='muted' style='margin-top:8px'><strong style='color:inherit'>— Missoula Service Owner</strong></p>
+    </article>
+    <article class='card' data-reveal data-delay='120'>
+      <p class='badge'>What Happens Next</p>
+      <ol class='muted' style='margin-top:8px'>
+        <li>1) Submit intake</li>
+        <li>2) Review first draft</li>
+        <li>3) Approve and launch</li>
+      </ol>
+      <div style='margin-top:12px;display:flex;gap:10px;flex-wrap:wrap'>
+        <a class='btn p'>Start Intake</a>
+        <a class='btn s'>Talk to Sales</a>
+      </div>
+    </article>
+  </section>
+
+  <section class='section faq card'>
+    <p class='badge' data-reveal>More Questions</p>
+    <details data-reveal data-delay='80'><summary>How customizable is this template?</summary><p class='muted'>Copy, sections, cards, and CTA paths can be adjusted per niche and campaign goals.</p></details>
+    <details data-reveal data-delay='130'><summary>Can this connect to our CRM?</summary><p class='muted'>Yes. Form routing and CRM integrations are available as scoped implementation tasks.</p></details>
+    <details data-reveal data-delay='180'><summary>What if we need ongoing updates?</summary><p class='muted'>Monthly care plans cover updates, monitoring, and optimization cycles.</p></details>
+  </section>
+
+</main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p><strong>North Valley Exteriors</strong> · Roofing &amp; Exterior Repair · Missoula, Montana</p>
+      <p>Editorial Story archetype demo template — optimized for narrative trust, accessibility, and conversion clarity.</p>
+    </div>
+  </footer>
+
+<script id='v4-reveal-script'>
+(function(){
+  const candidates = 'section, article, .card, h1, h2, h3, p, ul, .btn, .cta-row, .trust-strip, .kpi-strip, .queue, .dispatch, .proof, .coverage';
+  const nodes = Array.from(document.querySelectorAll(candidates));
+  let idx = 0;
+  nodes.forEach(n => {
+    if(n.closest('header')) return;
+    if(!n.hasAttribute('data-reveal')) {
+      n.setAttribute('data-reveal','');
+      n.setAttribute('data-delay', String(Math.min(360, (idx%8)*40)));
+      idx++;
+    }
+  });
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const d = Number(e.target.getAttribute('data-delay')||0);
+        setTimeout(()=>e.target.classList.add('is-visible'), d);
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.14});
+  document.querySelectorAll('[data-reveal]').forEach(el=>io.observe(el));
+})();
+</script>
+
+</body>
+</html>
