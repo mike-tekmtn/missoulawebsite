@@ -1,0 +1,86 @@
+[
+  {
+    "slug": "roofing-contractor",
+    "name": "Roofing Contractor",
+    "archetype": "utility-dashboard",
+    "color": "#22d3ee",
+    "hero": "Emergency Roof Repair & Replacement in Missoula",
+    "sub": "Live dispatch clarity, storm-priority scheduling, and fast on-site estimates.",
+    "services": [
+      "Emergency leak response",
+      "Shingle replacement",
+      "Flashing & ventilation",
+      "Insurance-ready photo reports"
+    ]
+  },
+  {
+    "slug": "dental-clinic",
+    "name": "Dental Clinic",
+    "archetype": "split-screen-hero",
+    "color": "#60a5fa",
+    "hero": "Family Dentistry with Same-Week Appointments",
+    "sub": "Comfort-focused care, transparent treatment plans, and online booking.",
+    "services": [
+      "Preventive cleanings",
+      "Cosmetic dentistry",
+      "Restorative procedures",
+      "New patient exams"
+    ]
+  },
+  {
+    "slug": "law-firm",
+    "name": "Law Firm",
+    "archetype": "editorial-story",
+    "color": "#f59e0b",
+    "hero": "Legal Guidance with Clear Strategy and Measurable Progress",
+    "sub": "Narrative-first structure to build trust before the consultation ask.",
+    "services": [
+      "Case evaluation",
+      "Litigation support",
+      "Negotiation strategy",
+      "Client communication cadence"
+    ]
+  },
+  {
+    "slug": "hvac-service",
+    "name": "HVAC Service",
+    "archetype": "map-first-service-area",
+    "color": "#34d399",
+    "hero": "Heating & Cooling Service Across the Missoula Valley",
+    "sub": "Coverage-led layout for fast availability checks and seasonal demand.",
+    "services": [
+      "AC repair",
+      "Furnace diagnostics",
+      "Heat pump installs",
+      "Maintenance plans"
+    ]
+  },
+  {
+    "slug": "fitness-coach",
+    "name": "Fitness Coach",
+    "archetype": "offer-funnel-landing",
+    "color": "#f472b6",
+    "hero": "One Coaching Offer. One Goal. One Transformation Plan.",
+    "sub": "Single-offer funnel optimized for social traffic and quick conversion.",
+    "services": [
+      "1:1 coaching",
+      "Nutrition guidance",
+      "Progress tracking",
+      "Weekly accountability"
+    ]
+  },
+  {
+    "slug": "home-cleaning",
+    "name": "Home Cleaning",
+    "archetype": "asymmetric-bento",
+    "color": "#a78bfa",
+    "hero": "Reliable Home Cleaning with Flexible Scheduling",
+    "sub": "Bento-style proof grid for reviews, service tiers, and instant quote paths.",
+    "services": [
+      "Standard cleaning",
+      "Deep cleaning",
+      "Move-in / move-out",
+      "Recurring plans"
+    ]
+  }
+]

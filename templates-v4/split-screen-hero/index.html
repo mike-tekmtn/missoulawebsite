@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Templates v3 • Split-Screen Hero</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+  <link href='https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap' rel='stylesheet'>
+  <style>body{font-family:Montserrat,system-ui,sans-serif}</style>
+
+<style id='v4-reveal-style'>
+[data-reveal]{opacity:0;transform:translateY(14px);transition:opacity .42s ease, transform .55s cubic-bezier(.2,.8,.2,1)}
+[data-reveal].is-visible{opacity:1;transform:translateY(0)}
+</style>
+
+</head>
+<body class="bg-slate-950 text-slate-100">
+  <main class="min-h-screen">
+    <header class="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+      <div class="font-bold text-lg tracking-tight">Template v3 • Split-Screen Hero</div>
+      <nav class="text-sm text-slate-300 flex flex-wrap gap-4">
+        <a href="index.html" class="hover:text-white">Home</a>
+        <a href="services.html" class="hover:text-white">Services</a>
+        <a href="about.html" class="hover:text-white">About</a>
+        <a href="contact.html" class="hover:text-white">Contact</a>
+      </nav>
+    </header>
+
+    <section class="max-w-7xl mx-auto px-6 pb-10">
+      <div class="grid lg:grid-cols-2 rounded-2xl overflow-hidden border border-slate-800 min-h-[680px]">
+        <!-- Text panel -->
+        <div class="p-8 md:p-14 flex flex-col justify-center bg-slate-950 order-1">
+          <p class="text-cyan-300 text-xs uppercase tracking-[0.18em] font-semibold">Missoula Local Service</p>
+          <h1 class="mt-4 text-4xl md:text-6xl font-extrabold leading-[1.05] max-w-xl">Fast, Professional Service From a Team You Can Trust</h1>
+          <p class="mt-6 text-slate-300 text-lg max-w-xl">Book with confidence. Clear pricing, quick response times, and dependable support for homes and businesses across the Missoula area.</p>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#" class="inline-flex items-center rounded-lg bg-cyan-400 text-slate-900 font-bold px-5 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-300">Request Estimate</a>
+            <a href="#" class="inline-flex items-center rounded-lg border border-slate-700 px-5 py-3 font-semibold text-slate-100 hover:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-400">View Services</a>
+          </div>
+
+          <div class="mt-8 rounded-xl border border-slate-800 bg-slate-900/70 p-4">
+            <ul class="grid sm:grid-cols-3 gap-2 text-sm text-slate-200">
+              <li>✓ Licensed &amp; Insured</li>
+              <li>✓ 4.9★ Local Rating</li>
+              <li>✓ Serving Missoula + Nearby</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Media panel -->
+        <aside class="relative order-2 min-h-[360px] lg:min-h-full">
+          <img
+            src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=80"
+            alt="Technician helping homeowner in front of mountain backdrop"
+            class="absolute inset-0 h-full w-full object-cover object-center"
+          />
+          <div class="absolute inset-0 bg-slate-950/45"></div>
+
+          <div class="absolute bottom-6 left-6 right-6 rounded-xl bg-slate-900/80 border border-slate-700 p-4">
+            <p class="text-sm text-slate-200"><strong class="text-white">Today’s availability:</strong> Same-day estimate windows open.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  
+  <section class='section' data-reveal>
+    <article class='card'>
+      <p class='badge'>Case Study</p>
+      <h2 style='margin:8px 0 0;font-size:1.8rem'>Local Results Snapshot</h2>
+      <p class='muted' style='margin-top:10px'>A recent client improved qualified lead volume after clarifying service pages, tightening CTAs, and improving mobile speed.</p>
+      <ul class='muted' style='margin-top:10px'>
+        <li>• +38% form submissions in 60 days</li>
+        <li>• -27% bounce rate on mobile</li>
+        <li>• Higher quality calls from service-area pages</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class='section grid2'>
+    <article class='card' data-reveal data-delay='60'>
+      <p class='badge'>Testimonials</p>
+      <h3 style='margin:8px 0 0'>“Clear process and fast turnaround.”</h3>
+      <p class='muted' style='margin-top:8px'>“We finally have a site that explains what we do and gets real calls.”</p>
+      <p class='muted' style='margin-top:8px'><strong style='color:inherit'>— Missoula Service Owner</strong></p>
+    </article>
+    <article class='card' data-reveal data-delay='120'>
+      <p class='badge'>What Happens Next</p>
+      <ol class='muted' style='margin-top:8px'>
+        <li>1) Submit intake</li>
+        <li>2) Review first draft</li>
+        <li>3) Approve and launch</li>
+      </ol>
+      <div style='margin-top:12px;display:flex;gap:10px;flex-wrap:wrap'>
+        <a class='btn p'>Start Intake</a>
+        <a class='btn s'>Talk to Sales</a>
+      </div>
+    </article>
+  </section>
+
+  <section class='section faq card'>
+    <p class='badge' data-reveal>More Questions</p>
+    <details data-reveal data-delay='80'><summary>How customizable is this template?</summary><p class='muted'>Copy, sections, cards, and CTA paths can be adjusted per niche and campaign goals.</p></details>
+    <details data-reveal data-delay='130'><summary>Can this connect to our CRM?</summary><p class='muted'>Yes. Form routing and CRM integrations are available as scoped implementation tasks.</p></details>
+    <details data-reveal data-delay='180'><summary>What if we need ongoing updates?</summary><p class='muted'>Monthly care plans cover updates, monitoring, and optimization cycles.</p></details>
+  </section>
+
+</main>
+
+<script id='v4-reveal-script'>
+(function(){
+  const candidates = 'section, article, .card, h1, h2, h3, p, ul, .btn, .cta-row, .trust-strip, .kpi-strip, .queue, .dispatch, .proof, .coverage';
+  const nodes = Array.from(document.querySelectorAll(candidates));
+  let idx = 0;
+  nodes.forEach(n => {
+    if(n.closest('header')) return;
+    if(!n.hasAttribute('data-reveal')) {
+      n.setAttribute('data-reveal','');
+      n.setAttribute('data-delay', String(Math.min(360, (idx%8)*40)));
+      idx++;
+    }
+  });
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const d = Number(e.target.getAttribute('data-delay')||0);
+        setTimeout(()=>e.target.classList.add('is-visible'), d);
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.14});
+  document.querySelectorAll('[data-reveal]').forEach(el=>io.observe(el));
+})();
+</script>
+
+</body>
+</html>

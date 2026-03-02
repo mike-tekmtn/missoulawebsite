@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Five Valleys Home Services | Utility Dashboard Template</title>
+  <meta name="description" content="Utility Dashboard homepage archetype for local service businesses: live availability, dispatch visibility, and fast conversion." />
+  <style>
+    :root {
+      --bg: #0b1220;
+      --surface-1: #121c31;
+      --surface-2: #17233d;
+      --surface-3: #223354;
+      --text: #e9f1ff;
+      --muted: #9eb0d3;
+      --accent: #20c997;
+      --accent-2: #49dcb1;
+      --warning: #ffb020;
+      --danger: #ff6b6b;
+      --border: #30446e;
+      --ring: #92ffe0;
+
+      --s-1: 4px;
+      --s-2: 8px;
+      --s-3: 12px;
+      --s-4: 16px;
+      --s-5: 24px;
+      --s-6: 32px;
+      --s-7: 40px;
+      --s-8: 48px;
+      --s-9: 64px;
+      --radius: 16px;
+      --container: 1240px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Manrope, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: radial-gradient(circle at 80% -10%, #1f2f4f 0%, var(--bg) 48%);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    a { color: inherit; }
+
+    .skip-link {
+      position: absolute;
+      left: 12px;
+      top: -44px;
+      background: #fff;
+      color: #101010;
+      padding: 10px 12px;
+      border-radius: 8px;
+      z-index: 999;
+      text-decoration: none;
+    }
+    .skip-link:focus-visible { top: 12px; }
+
+    .container {
+      width: min(var(--container), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      padding: var(--s-4) 0;
+      border-bottom: 1px solid rgba(158, 176, 211, 0.22);
+      backdrop-filter: blur(8px);
+      background: rgba(11, 18, 32, 0.75);
+      position: sticky;
+      top: 0;
+      z-index: 30;
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--s-5);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: var(--s-3);
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .brand-badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(160deg, var(--accent), #11785b);
+      display: grid;
+      place-items: center;
+      color: #04120d;
+      font-weight: 800;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: var(--s-5);
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover { color: var(--text); }
+
+    .nav-phone {
+      text-decoration: none;
+      font-weight: 700;
+      background: #17324d;
+      border: 1px solid #2f557f;
+      color: #d7ecff;
+      border-radius: 999px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 14px;
+    }
+
+    .dashboard {
+      padding: var(--s-8) 0 var(--s-9);
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(28, 42, 72, 0.9), rgba(18, 28, 49, 0.95));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .masthead {
+      grid-column: span 7;
+      display: grid;
+      gap: var(--s-5);
+    }
+
+    .kicker {
+      color: var(--accent-2);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      margin: 0;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.35rem);
+      line-height: 1.1;
+      max-width: 16ch;
+    }
+
+    .subcopy {
+      margin: 0;
+      color: #c9d7f2;
+      max-width: 54ch;
+      font-size: 1.03rem;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: var(--s-2);
+    }
+
+    .btn {
+      text-decoration: none;
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: linear-gradient(160deg, var(--accent), #149d75);
+      color: #082218;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border-color: #4a638f;
+      color: #d9e8ff;
+    }
+
+    .trust-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--s-2);
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .trust-chips li {
+      background: #1a2946;
+      border: 1px solid #30466f;
+      color: #bbcae8;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .kpi-strip {
+      grid-column: span 7;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+    }
+
+    .kpi {
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      border-right: 1px solid var(--border);
+    }
+
+    .kpi:last-child {
+      border-right: none;
+    }
+
+    .kpi dt {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .kpi dd {
+      margin: 0;
+      font-size: 1.3rem;
+      font-weight: 780;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    .queue {
+      grid-column: span 7;
+    }
+
+    .module-title {
+      margin: 0 0 var(--s-4);
+      font-size: 1.1rem;
+      letter-spacing: 0.01em;
+    }
+
+    .queue-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .queue-item {
+      display: grid;
+      grid-template-columns: 1.3fr 1.8fr auto;
+      gap: 12px;
+      align-items: center;
+      background: var(--surface-2);
+      border: 1px solid #304b78;
+      border-radius: 12px;
+      padding: 12px;
+    }
+
+    .queue-item small { color: #aec0e2; }
+    .queue-item strong { font-size: 0.98rem; }
+
+    .tag {
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 6px 10px;
+      text-transform: uppercase;
+      justify-self: end;
+      min-width: 90px;
+      text-align: center;
+    }
+
+    .tag.en-route { background: rgba(32, 201, 151, 0.14); border: 1px solid rgba(73, 220, 177, 0.55); color: #9df7dd; }
+    .tag.scheduled { background: rgba(255, 176, 32, 0.12); border: 1px solid rgba(255, 176, 32, 0.48); color: #ffd48a; }
+    .tag.pending { background: rgba(255, 107, 107, 0.12); border: 1px solid rgba(255, 107, 107, 0.5); color: #ffb3b3; }
+
+    .dispatch,
+    .proof,
+    .coverage {
+      grid-column: span 5;
+    }
+
+    .status-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      color: #a9f0dc;
+      margin-bottom: var(--s-3);
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(32, 201, 151, 0.13);
+    }
+
+    .dispatch p,
+    .proof p,
+    .coverage p {
+      margin: 0;
+      color: #c5d5f4;
+    }
+
+    .dispatch p + p,
+    .proof p + p,
+    .coverage p + p {
+      margin-top: 10px;
+    }
+
+    .credentials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 0;
+      margin: var(--s-4) 0 0;
+      list-style: none;
+    }
+
+    .credentials li {
+      border: 1px solid #42608f;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.8rem;
+      color: #d5e3ff;
+    }
+
+    .faq {
+      padding-bottom: var(--s-9);
+      display: grid;
+      gap: 12px;
+    }
+
+    .faq details {
+      background: #141f37;
+      border: 1px solid #2f456f;
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    .faq summary {
+      cursor: pointer;
+      font-weight: 650;
+      color: #e2ecff;
+    }
+
+    .faq p { margin: 10px 0 0; color: #bfd0ee; }
+
+    .final-cta {
+      margin-bottom: var(--s-9);
+      display: flex;
+      justify-content: space-between;
+      gap: var(--s-5);
+      flex-wrap: wrap;
+      align-items: center;
+      background: linear-gradient(160deg, #10253f, #17345d);
+      border: 1px solid #3e6298;
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .final-cta h2 { margin: 0 0 8px; }
+    .final-cta p { margin: 0; color: #c4d6f5; }
+
+    footer {
+      border-top: 1px solid rgba(158, 176, 211, 0.2);
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 18px 0 28px;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--ring);
+      outline-offset: 2px;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 1023px) {
+      .dashboard {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+      }
+
+      .masthead,
+      .kpi-strip,
+      .queue,
+      .dispatch,
+      .proof,
+      .coverage {
+        grid-column: span 6;
+      }
+
+      .kpi-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .kpi {
+        border-right: none;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: var(--surface-1);
+      }
+
+      .topbar-inner {
+        flex-wrap: wrap;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .container { width: calc(100% - 24px); }
+      .topbar { position: static; }
+      .panel { padding: 20px; }
+
+      h1 { max-width: 100%; }
+
+      .kpi-strip { grid-template-columns: 1fr; gap: 8px; }
+
+      .queue-item {
+        grid-template-columns: 1fr;
+      }
+
+      .tag {
+        justify-self: start;
+      }
+
+      .final-cta {
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+
+<style id='v4-reveal-style'>
+[data-reveal]{opacity:0;transform:translateY(14px);transition:opacity .42s ease, transform .55s cubic-bezier(.2,.8,.2,1)}
+[data-reveal].is-visible{opacity:1;transform:translateY(0)}
+</style>
+
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand" aria-label="Five Valleys Home Services">
+        <span class="brand-badge" aria-hidden="true">FV</span>
+        <span>Five Valleys Home Services</span>
+      </div>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#dashboard">Dispatch Board</a></li>
+          <li><a href="#coverage">Coverage</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="nav-phone" href="tel:+14065550177">Call Dispatch: (406) 555-0177</a>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section id="dashboard" class="dashboard" aria-label="Utility Dashboard Overview">
+      <article class="panel masthead">
+        <p class="kicker">Emergency Home Service • Missoula, MT</p>
+        <h1>Get a local technician dispatched today, with live status clarity.</h1>
+        <p class="subcopy">See response windows, active queue coverage, and trusted service metrics before you book. Fast estimate flow. No account required.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#contact">Get My Fast Estimate</a>
+          <a class="btn btn-secondary" href="tel:+14065550177">Call Dispatch Now</a>
+        </div>
+        <ul class="trust-chips" aria-label="Trust indicators">
+          <li>4.9★ from 312 reviews</li>
+          <li>Licensed &amp; Insured</li>
+          <li>2-Year Workmanship Guarantee</li>
+          <li>Serving Missoula Since 2011</li>
+        </ul>
+      </article>
+
+      <section class="panel kpi-strip" aria-label="Operational KPIs">
+        <dl class="kpi">
+          <dt>Avg Callback</dt>
+          <dd>7 min</dd>
+        </dl>
+        <dl class="kpi">
+          <dt>Jobs This Month</dt>
+          <dd>184</dd>
+        </dl>
+        <dl class="kpi">
+          <dt>First-Visit Fix</dt>
+          <dd>92%</dd>
+        </dl>
+        <dl class="kpi">
+          <dt>Service Radius</dt>
+          <dd>35 miles</dd>
+        </dl>
+      </section>
+
+      <article class="panel queue" aria-labelledby="queue-title">
+        <h2 id="queue-title" class="module-title">Current Queue Snapshot</h2>
+        <ul class="queue-list">
+          <li class="queue-item">
+            <span>
+              <small>University District</small><br />
+              <strong>Drain line backup</strong>
+            </span>
+            <span><small>ETA</small><br /><strong>35–50 min</strong></span>
+            <span class="tag en-route">En route</span>
+          </li>
+          <li class="queue-item">
+            <span>
+              <small>South Hills</small><br />
+              <strong>Furnace ignition fault</strong>
+            </span>
+            <span><small>ETA</small><br /><strong>1:10–1:35</strong></span>
+            <span class="tag scheduled">Scheduled</span>
+          </li>
+          <li class="queue-item">
+            <span>
+              <small>East Missoula</small><br />
+              <strong>Water heater diagnosis</strong>
+            </span>
+            <span><small>ETA</small><br /><strong>2:00–2:40</strong></span>
+            <span class="tag pending">Pending</span>
+          </li>
+        </ul>
+      </article>
+
+      <article class="panel dispatch" aria-labelledby="dispatch-title">
+        <h2 id="dispatch-title" class="module-title">Dispatch Board</h2>
+        <p class="status-line"><span class="dot" aria-hidden="true"></span>Board status: Live</p>
+        <p><strong>Next arrival window:</strong> 11:30 AM–1:00 PM</p>
+        <p><strong>Inbound channel:</strong> Call + text dispatch active</p>
+        <p><small>Last updated 4 minutes ago</small></p>
+      </article>
+
+      <article class="panel proof" aria-labelledby="proof-title">
+        <h2 id="proof-title" class="module-title">Why Homeowners Trust This Team</h2>
+        <p><strong>"They gave us a real ETA, fixed it in one trip, and cleaned up before leaving."</strong></p>
+        <p>— Nina R., Missoula homeowner</p>
+        <ul class="credentials" aria-label="Credentials">
+          <li>Licensed Contractor</li>
+          <li>Insured Team</li>
+          <li>Background-Checked Techs</li>
+        </ul>
+      </article>
+
+      <article id="coverage" class="panel coverage" aria-labelledby="coverage-title">
+        <h2 id="coverage-title" class="module-title">Coverage Map Summary</h2>
+        <p>Daily routes include Missoula, Lolo, Bonner, East Missoula, Florence, and Frenchtown.</p>
+        <p>Priority same-day routing available for emergency plumbing, heating loss, and electrical hazards.</p>
+      </article>
+    </section>
+
+    <section id="faq" class="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Quick Answers Before You Book</h2>
+      <details>
+        <summary>Do I need to create an account to request service?</summary>
+        <p>No. You can call or request an estimate directly with basic contact details only.</p>
+      </details>
+      <details>
+        <summary>How accurate are your ETA windows?</summary>
+        <p>Dispatch windows are refreshed throughout the day and adjusted when route conditions change.</p>
+      </details>
+      <details>
+        <summary>Do you provide written estimates before work starts?</summary>
+        <p>Yes. Every visit includes a scope summary and clear pricing before authorization.</p>
+      </details>
+    </section>
+
+    <section id="contact" class="final-cta" aria-label="Final call to action">
+      <div>
+        <h2>Need help now? Dispatch can place you in today’s queue.</h2>
+        <p>Fast estimate flow, verified local team, and live scheduling clarity for Missoula-area homes.</p>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:+14065550177">Call (406) 555-0177</a>
+        <a class="btn btn-secondary" href="#dashboard">Review Dispatch Board</a>
+      </div>
+    </section>
+  
+  <section class='section' data-reveal>
+    <article class='card'>
+      <p class='badge'>Case Study</p>
+      <h2 style='margin:8px 0 0;font-size:1.8rem'>Local Results Snapshot</h2>
+      <p class='muted' style='margin-top:10px'>A recent client improved qualified lead volume after clarifying service pages, tightening CTAs, and improving mobile speed.</p>
+      <ul class='muted' style='margin-top:10px'>
+        <li>• +38% form submissions in 60 days</li>
+        <li>• -27% bounce rate on mobile</li>
+        <li>• Higher quality calls from service-area pages</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class='section grid2'>
+    <article class='card' data-reveal data-delay='60'>
+      <p class='badge'>Testimonials</p>
+      <h3 style='margin:8px 0 0'>“Clear process and fast turnaround.”</h3>
+      <p class='muted' style='margin-top:8px'>“We finally have a site that explains what we do and gets real calls.”</p>
+      <p class='muted' style='margin-top:8px'><strong style='color:inherit'>— Missoula Service Owner</strong></p>
+    </article>
+    <article class='card' data-reveal data-delay='120'>
+      <p class='badge'>What Happens Next</p>
+      <ol class='muted' style='margin-top:8px'>
+        <li>1) Submit intake</li>
+        <li>2) Review first draft</li>
+        <li>3) Approve and launch</li>
+      </ol>
+      <div style='margin-top:12px;display:flex;gap:10px;flex-wrap:wrap'>
+        <a class='btn p'>Start Intake</a>
+        <a class='btn s'>Talk to Sales</a>
+      </div>
+    </article>
+  </section>
+
+  <section class='section faq card'>
+    <p class='badge' data-reveal>More Questions</p>
+    <details data-reveal data-delay='80'><summary>How customizable is this template?</summary><p class='muted'>Copy, sections, cards, and CTA paths can be adjusted per niche and campaign goals.</p></details>
+    <details data-reveal data-delay='130'><summary>Can this connect to our CRM?</summary><p class='muted'>Yes. Form routing and CRM integrations are available as scoped implementation tasks.</p></details>
+    <details data-reveal data-delay='180'><summary>What if we need ongoing updates?</summary><p class='muted'>Monthly care plans cover updates, monitoring, and optimization cycles.</p></details>
+  </section>
+
+</main>
+
+  <footer>
+    <div class="container">Template archetype: Utility Dashboard for local service business websites.</div>
+  </footer>
+
+<script id='v4-reveal-script'>
+(function(){
+  const candidates = 'section, article, .card, h1, h2, h3, p, ul, .btn, .cta-row, .trust-strip, .kpi-strip, .queue, .dispatch, .proof, .coverage';
+  const nodes = Array.from(document.querySelectorAll(candidates));
+  let idx = 0;
+  nodes.forEach(n => {
+    if(n.closest('header')) return;
+    if(!n.hasAttribute('data-reveal')) {
+      n.setAttribute('data-reveal','');
+      n.setAttribute('data-delay', String(Math.min(360, (idx%8)*40)));
+      idx++;
+    }
+  });
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const d = Number(e.target.getAttribute('data-delay')||0);
+        setTimeout(()=>e.target.classList.add('is-visible'), d);
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.14});
+  document.querySelectorAll('[data-reveal]').forEach(el=>io.observe(el));
+})();
+</script>
+
+</body>
+</html>

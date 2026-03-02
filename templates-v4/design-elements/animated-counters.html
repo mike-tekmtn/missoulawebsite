@@ -1,0 +1,6 @@
+<!doctype html><html><head><meta charset='utf-8'/><meta name='viewport' content='width=device-width,initial-scale=1'/><script src='https://cdn.tailwindcss.com'></script><style>
+body{background:#020617;color:#e2e8f0;font-family:Inter,system-ui,sans-serif}
+.wrap{max-width:1000px;margin:0 auto;padding:24px}
+.reveal{opacity:0;transform:translateY(14px);transition:.45s ease}
+.reveal.in{opacity:1;transform:none}
+</style></head><body><main class='wrap'><a href='index.html' class='text-cyan-300'>← Back</a><h1 class='text-3xl font-bold mt-3'>Animated Counters</h1><div class='grid grid-cols-2 gap-4 mt-6'><div class='rounded-xl border p-6'><p class='text-slate-400'>Projects</p><p id='c1' class='text-3xl font-bold'>0</p></div><div class='rounded-xl border p-6'><p class='text-slate-400'>Rating</p><p id='c2' class='text-3xl font-bold'>0</p></div></div><script>function a(id,to,d=900){const el=document.getElementById(id);const s=performance.now();requestAnimationFrame(function f(t){let p=Math.min(1,(t-s)/d);el.textContent=(to*p).toFixed(id==='c2'?1:0);if(p<1)requestAnimationFrame(f)});}a('c1',184);a('c2',4.9);</script></main></body></html>

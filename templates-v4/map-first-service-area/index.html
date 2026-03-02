@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Map-First Service Area | Alpine Mobile Locksmith</title>
+  <meta name="description" content="See if Alpine Mobile Locksmith serves your address in Missoula and nearby valleys. Check your zone in seconds, then book fast help." />
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --surface-2: #eef4ff;
+      --ink: #0f2138;
+      --muted: #4d607b;
+      --line: #c8d4ea;
+      --accent: #0b63f6;
+      --accent-strong: #094fc4;
+      --core-zone: rgba(11, 99, 246, 0.26);
+      --extended-zone: rgba(41, 133, 255, 0.14);
+      --ok: #0c7f43;
+      --shadow: 0 12px 26px rgba(16, 39, 73, 0.1);
+
+      --s-1: 4px;
+      --s-2: 8px;
+      --s-3: 12px;
+      --s-4: 16px;
+      --s-5: 24px;
+      --s-6: 32px;
+      --s-7: 40px;
+      --s-8: 48px;
+      --s-9: 64px;
+
+      --radius-sm: 12px;
+      --radius: 16px;
+      --radius-lg: 20px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.58;
+    }
+
+    a { color: inherit; }
+
+    .skip-link {
+      position: absolute;
+      left: 8px;
+      top: -100px;
+      background: #fff;
+      color: #000;
+      padding: 8px 10px;
+      border-radius: 8px;
+      z-index: 999;
+    }
+
+    .skip-link:focus-visible { top: 8px; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(244, 247, 251, 0.94);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .container {
+      width: min(1240px, 100% - 32px);
+      margin: 0 auto;
+    }
+
+    .header-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--s-4);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: linear-gradient(135deg, #0b63f6, #2891ff);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.25);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: var(--s-5);
+      margin: 0;
+      padding: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .call-pill {
+      min-height: 44px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid #8ab1fb;
+      background: #fff;
+      color: var(--accent-strong);
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+
+    .hero {
+      padding: var(--s-7) 0 var(--s-8);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--s-6);
+      align-items: start;
+    }
+
+    .intro .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #e8f0ff;
+      color: #184280;
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: var(--s-4);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.9rem, 4.6vw, 3.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      max-width: 16ch;
+    }
+
+    .intro p {
+      margin: var(--s-4) 0 0;
+      max-width: 46ch;
+      color: var(--muted);
+      font-size: 1.03rem;
+    }
+
+    .cta-row {
+      margin-top: var(--s-5);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      min-height: 48px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 8px 16px rgba(11, 99, 246, 0.25);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: #123463;
+      border-color: #9ab9f3;
+    }
+
+    .trust-strip {
+      margin-top: var(--s-5);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .trust-chip {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 12px;
+      color: #244367;
+      font-size: 0.86rem;
+      font-weight: 650;
+    }
+
+    .map-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: var(--s-4);
+      box-shadow: var(--shadow);
+    }
+
+    .map-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: var(--s-3);
+    }
+
+    .map-head h2 {
+      margin: 0;
+      font-size: 1.12rem;
+      line-height: 1.25;
+    }
+
+    .map-meta {
+      font-size: 0.84rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .map-stage {
+      position: relative;
+      min-height: 360px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid #bad0f1;
+      background:
+        radial-gradient(circle at 72% 38%, #d9ecff 0%, #cbe2fb 44%, #bfd8f5 100%);
+    }
+
+    .roads {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(108deg, transparent 44%, rgba(255,255,255,.72) 44.7%, transparent 45.6%),
+        linear-gradient(16deg, transparent 61%, rgba(255,255,255,.62) 61.5%, transparent 62.2%),
+        linear-gradient(61deg, transparent 73%, rgba(255,255,255,.58) 73.5%, transparent 74.1%);
+      opacity: .65;
+    }
+
+    .zone {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(19, 80, 168, 0.35);
+    }
+
+    .zone.extended {
+      width: 84%;
+      aspect-ratio: 1;
+      left: 8%;
+      top: 6%;
+      background: var(--extended-zone);
+    }
+
+    .zone.core {
+      width: 56%;
+      aspect-ratio: 1;
+      left: 22%;
+      top: 20%;
+      background: var(--core-zone);
+    }
+
+    .map-pin {
+      position: absolute;
+      transform: translate(-50%, -100%);
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.74rem;
+      color: #173b6a;
+      font-weight: 700;
+      text-shadow: 0 1px 0 rgba(255,255,255,.8);
+    }
+
+    .map-pin::before {
+      content: "";
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #0b63f6;
+      box-shadow: 0 0 0 3px rgba(255,255,255,.78);
+    }
+
+    .pin-label {
+      background: rgba(255,255,255,.84);
+      border: 1px solid rgba(132, 164, 210, 0.65);
+      padding: 2px 6px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .coverage-row {
+      margin-top: var(--s-3);
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .coverage-chip {
+      background: var(--surface-2);
+      border: 1px solid #c7d8fa;
+      border-radius: 12px;
+      padding: 10px 12px;
+      color: #1f3f69;
+      font-size: 0.86rem;
+      font-weight: 650;
+    }
+
+    .coverage-chip small {
+      display: block;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.74rem;
+      margin-top: 2px;
+    }
+
+    .map-footer {
+      margin-top: var(--s-3);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .map-link {
+      color: var(--accent-strong);
+      font-weight: 700;
+      text-underline-offset: 3px;
+    }
+
+    .service-area,
+    .process,
+    .faq,
+    .final-cta {
+      padding: var(--s-8) 0;
+    }
+
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: var(--s-6);
+      box-shadow: 0 10px 22px rgba(19, 45, 84, 0.07);
+    }
+
+    h2 {
+      margin: 0 0 var(--s-3);
+      font-size: clamp(1.3rem, 2.3vw, 2rem);
+      line-height: 1.2;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      max-width: 70ch;
+    }
+
+    .area-list {
+      margin: var(--s-5) 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+    }
+
+    .area-list li {
+      padding: 9px 10px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: #f9fbff;
+      font-weight: 620;
+      color: #214165;
+      font-size: 0.9rem;
+    }
+
+    .note {
+      margin-top: var(--s-4);
+      color: #516882;
+      font-size: 0.86rem;
+    }
+
+    .steps {
+      margin-top: var(--s-5);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--s-4);
+    }
+
+    .step {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: var(--s-4);
+      background: #fbfdff;
+    }
+
+    .step-tag {
+      display: inline-block;
+      margin-bottom: 8px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: #1d4f8e;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .step h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+      line-height: 1.25;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      padding: 12px 14px;
+    }
+
+    details + details { margin-top: 10px; }
+
+    summary {
+      font-weight: 700;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    details p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .final-cta .section-card {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--s-5);
+      background: linear-gradient(135deg, #eef4ff, #f7fbff 70%);
+    }
+
+    .final-cta p { margin: 8px 0 0; color: var(--muted); }
+
+    footer {
+      padding: var(--s-7) 0;
+      color: #5b6d84;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    :focus-visible {
+      outline: 3px solid #0b63f6;
+      outline-offset: 2px;
+      border-radius: 6px;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+        gap: var(--s-7);
+      }
+
+      .map-stage { min-height: 480px; }
+    }
+
+    @media (max-width: 1023px) {
+      nav ul { gap: 14px; }
+      .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 767px) {
+      .container { width: min(1240px, 100% - 24px); }
+
+      .header-inner {
+        min-height: 66px;
+        gap: 10px;
+      }
+
+      nav { display: none; }
+
+      .brand span.label-short { display: inline; }
+      .brand span.label-long { display: none; }
+
+      .call-pill {
+        padding: 10px 12px;
+        font-size: 0.88rem;
+      }
+
+      .hero {
+        padding-top: var(--s-6);
+        padding-bottom: var(--s-7);
+      }
+
+      .map-stage {
+        min-height: 320px;
+      }
+
+      .coverage-row {
+        grid-template-columns: 1fr;
+      }
+
+      .steps { grid-template-columns: 1fr; }
+
+      .section-card { padding: var(--s-5); }
+
+      .btn {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+
+<style id='v4-reveal-style'>
+[data-reveal]{opacity:0;transform:translateY(14px);transition:opacity .42s ease, transform .55s cubic-bezier(.2,.8,.2,1)}
+[data-reveal].is-visible{opacity:1;transform:translateY(0)}
+</style>
+
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand" aria-label="Alpine Mobile Locksmith">
+        <div class="brand-mark" aria-hidden="true">AM</div>
+        <span class="label-long">Alpine Mobile Locksmith</span>
+        <span class="label-short" style="display:none;">Alpine Locksmith</span>
+      </div>
+
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#coverage">Coverage</a></li>
+          <li><a href="#process">How it works</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <a class="call-pill" href="tel:+14065550199" aria-label="Call Alpine Mobile Locksmith now">Call (406) 555-0199</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="intro">
+          <div class="kicker">Mobile Locksmith • Missoula Service Radius</div>
+          <h1 id="hero-title">See if your address is inside today’s rapid-response zone.</h1>
+          <p>Most lockouts in our core zone are reached in 45–90 minutes. Enter your area first, then choose call or text dispatch.</p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#coverage">Check My Address</a>
+            <a class="btn btn-secondary" href="tel:+14065550199">Text/Call Dispatch</a>
+          </div>
+
+          <div class="trust-strip" aria-label="Trust signals">
+            <span class="trust-chip">4.9★ from 318 local reviews</span>
+            <span class="trust-chip">Licensed • Bonded • Insured</span>
+            <span class="trust-chip">90-day workmanship guarantee</span>
+          </div>
+        </div>
+
+        <article class="map-card" aria-label="Service area map panel">
+          <div class="map-head">
+            <h2>Missoula Coverage Map</h2>
+            <span class="map-meta">Core 12 mi • Extended 25 mi</span>
+          </div>
+
+          <div class="map-stage" role="img" aria-label="Map showing Missoula core and extended locksmith service zones with locality pins.">
+            <div class="roads" aria-hidden="true"></div>
+            <div class="zone extended" aria-hidden="true"></div>
+            <div class="zone core" aria-hidden="true"></div>
+
+            <div class="map-pin" style="left:50%; top:46%;"><span class="pin-label">Downtown</span></div>
+            <div class="map-pin" style="left:39%; top:33%;"><span class="pin-label">Northside</span></div>
+            <div class="map-pin" style="left:63%; top:34%;"><span class="pin-label">Rattlesnake</span></div>
+            <div class="map-pin" style="left:56%; top:62%;"><span class="pin-label">South Hills</span></div>
+            <div class="map-pin" style="left:30%; top:57%;"><span class="pin-label">Target Range</span></div>
+            <div class="map-pin" style="left:72%; top:63%;"><span class="pin-label">East Missoula</span></div>
+          </div>
+
+          <div class="coverage-row" aria-label="Coverage zone details">
+            <div class="coverage-chip">Core Zone — 12 miles<small>Typical arrival: 45–90 min</small></div>
+            <div class="coverage-chip">Extended Zone — up to 25 miles<small>Arrival windows vary by weather and traffic</small></div>
+          </div>
+
+          <div class="map-footer">
+            <span><strong style="color: var(--ok);">Dispatch open:</strong> 7:00 AM–11:00 PM daily</span>
+            <a class="map-link" href="https://maps.google.com" target="_blank" rel="noopener noreferrer">Open full map</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="coverage" class="service-area" aria-labelledby="coverage-title">
+      <div class="container">
+        <div class="section-card">
+          <h2 id="coverage-title">Neighborhoods we regularly cover</h2>
+          <p class="lead">If your area is near the boundary, we’ll confirm your exact window before dispatch. We’d rather set a realistic ETA than overpromise.</p>
+
+          <ul class="area-list">
+            <li>Downtown Missoula</li>
+            <li>University District</li>
+            <li>Rattlesnake</li>
+            <li>South Hills</li>
+            <li>Target Range</li>
+            <li>East Missoula</li>
+            <li>Orchard Homes</li>
+            <li>Lower Miller Creek</li>
+            <li>Lolo (extended)</li>
+            <li>Bonner (extended)</li>
+          </ul>
+
+          <p class="note">Final serviceability depends on road conditions, weather events, and active emergency lockout volume.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="process" class="process" aria-labelledby="process-title">
+      <div class="container">
+        <div class="section-card">
+          <h2 id="process-title">How fast dispatch works</h2>
+          <p class="lead">We keep this simple so you can get moving quickly: verify area, confirm lock type, get live ETA.</p>
+
+          <div class="steps">
+            <article class="step">
+              <span class="step-tag">Step 1</span>
+              <h3>Confirm your location</h3>
+              <p>Share street + nearest cross street so we can place you in core or extended zone.</p>
+            </article>
+            <article class="step">
+              <span class="step-tag">Step 2</span>
+              <h3>Match the technician</h3>
+              <p>We assign the closest locksmith trained for your lock system and vehicle/home type.</p>
+            </article>
+            <article class="step">
+              <span class="step-tag">Step 3</span>
+              <h3>Receive ETA + price range</h3>
+              <p>You get a realistic arrival window and upfront range before anyone is sent.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <h2 id="faq-title">Service-area FAQ</h2>
+        <details>
+          <summary>Do you cover addresses outside Missoula city limits?</summary>
+          <p>Yes, in our extended zone up to roughly 25 miles depending on route conditions and current dispatch load.</p>
+        </details>
+        <details>
+          <summary>Can I get an ETA before committing?</summary>
+          <p>Absolutely. We confirm your zone first, then provide a realistic window before dispatch.</p>
+        </details>
+        <details>
+          <summary>Is after-hours coverage available?</summary>
+          <p>We handle many after-hours cases. Availability changes by day, so call/text for the current schedule.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="final-cta" aria-labelledby="final-cta-title">
+      <div class="container">
+        <div class="section-card">
+          <div>
+            <h2 id="final-cta-title">Need help now? Check your zone and dispatch in minutes.</h2>
+            <p>Fastest path: share your location first, then choose call or text.</p>
+          </div>
+          <div class="cta-row" style="margin-top:0;">
+            <a class="btn btn-primary" href="#coverage">Check My Address</a>
+            <a class="btn btn-secondary" href="tel:+14065550199">Call Dispatch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+  <section class='section' data-reveal>
+    <article class='card'>
+      <p class='badge'>Case Study</p>
+      <h2 style='margin:8px 0 0;font-size:1.8rem'>Local Results Snapshot</h2>
+      <p class='muted' style='margin-top:10px'>A recent client improved qualified lead volume after clarifying service pages, tightening CTAs, and improving mobile speed.</p>
+      <ul class='muted' style='margin-top:10px'>
+        <li>• +38% form submissions in 60 days</li>
+        <li>• -27% bounce rate on mobile</li>
+        <li>• Higher quality calls from service-area pages</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class='section grid2'>
+    <article class='card' data-reveal data-delay='60'>
+      <p class='badge'>Testimonials</p>
+      <h3 style='margin:8px 0 0'>“Clear process and fast turnaround.”</h3>
+      <p class='muted' style='margin-top:8px'>“We finally have a site that explains what we do and gets real calls.”</p>
+      <p class='muted' style='margin-top:8px'><strong style='color:inherit'>— Missoula Service Owner</strong></p>
+    </article>
+    <article class='card' data-reveal data-delay='120'>
+      <p class='badge'>What Happens Next</p>
+      <ol class='muted' style='margin-top:8px'>
+        <li>1) Submit intake</li>
+        <li>2) Review first draft</li>
+        <li>3) Approve and launch</li>
+      </ol>
+      <div style='margin-top:12px;display:flex;gap:10px;flex-wrap:wrap'>
+        <a class='btn p'>Start Intake</a>
+        <a class='btn s'>Talk to Sales</a>
+      </div>
+    </article>
+  </section>
+
+  <section class='section faq card'>
+    <p class='badge' data-reveal>More Questions</p>
+    <details data-reveal data-delay='80'><summary>How customizable is this template?</summary><p class='muted'>Copy, sections, cards, and CTA paths can be adjusted per niche and campaign goals.</p></details>
+    <details data-reveal data-delay='130'><summary>Can this connect to our CRM?</summary><p class='muted'>Yes. Form routing and CRM integrations are available as scoped implementation tasks.</p></details>
+    <details data-reveal data-delay='180'><summary>What if we need ongoing updates?</summary><p class='muted'>Monthly care plans cover updates, monitoring, and optimization cycles.</p></details>
+  </section>
+
+</main>
+
+  <footer>
+    <div class="container">© 2026 Alpine Mobile Locksmith • Missoula, MT</div>
+  </footer>
+
+<script id='v4-reveal-script'>
+(function(){
+  const candidates = 'section, article, .card, h1, h2, h3, p, ul, .btn, .cta-row, .trust-strip, .kpi-strip, .queue, .dispatch, .proof, .coverage';
+  const nodes = Array.from(document.querySelectorAll(candidates));
+  let idx = 0;
+  nodes.forEach(n => {
+    if(n.closest('header')) return;
+    if(!n.hasAttribute('data-reveal')) {
+      n.setAttribute('data-reveal','');
+      n.setAttribute('data-delay', String(Math.min(360, (idx%8)*40)));
+      idx++;
+    }
+  });
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const d = Number(e.target.getAttribute('data-delay')||0);
+        setTimeout(()=>e.target.classList.add('is-visible'), d);
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.14});
+  document.querySelectorAll('[data-reveal]').forEach(el=>io.observe(el));
+})();
+</script>
+
+</body>
+</html>

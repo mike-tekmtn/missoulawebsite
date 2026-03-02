@@ -1,0 +1,6 @@
+<!doctype html><html><head><meta charset='utf-8'/><meta name='viewport' content='width=device-width,initial-scale=1'/><script src='https://cdn.tailwindcss.com'></script><style>
+body{background:#020617;color:#e2e8f0;font-family:Inter,system-ui,sans-serif}
+.wrap{max-width:1000px;margin:0 auto;padding:24px}
+.reveal{opacity:0;transform:translateY(14px);transition:.45s ease}
+.reveal.in{opacity:1;transform:none}
+</style></head><body><main class='wrap'><a href='index.html' class='text-cyan-300'>← Back</a><h1 class='text-3xl font-bold mt-3'>Before/After Slider</h1><div class='relative mt-6 rounded-xl overflow-hidden border border-slate-700'><img src='https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1400&q=80'><div id='aft' class='absolute inset-y-0 right-0 overflow-hidden' style='width:50%'><img src='https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1400&q=80' class='h-full object-cover'></div></div><input id='r' type='range' min='0' max='100' value='50' class='w-full mt-4'><script>r.oninput=()=>aft.style.width=(100-r.value)+'%';</script></main></body></html>
