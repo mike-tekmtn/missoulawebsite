@@ -1,0 +1,13 @@
+{
+  "businessName": "Summit Shield Roofing",
+  "businessType": "roofing contractor",
+  "contactName": "Mike",
+  "email": "hello@summitshieldroofing.com",
+  "phone": "406-555-0199",
+  "timeline": "one-day",
+  "pageCount": "4-6",
+  "copywriting": "yes",
+  "features": ["contact-form", "booking"],
+  "notes": "Need storm damage focus, trust badges, and fast estimate CTA.",
+  "template": "utility-dashboard"
+}

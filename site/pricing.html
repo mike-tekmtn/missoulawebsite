@@ -5,11 +5,18 @@
   <meta name='viewport' content='width=device-width,initial-scale=1'/>
   <title>Pricing | Missoula Website Co</title>
   <script src='https://cdn.tailwindcss.com'></script>
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+  <link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap' rel='stylesheet'>
+  <style>body{font-family:Inter,system-ui,sans-serif}.brand-font,h1,h2,h3{font-family:Sora,Inter,sans-serif}</style>
 </head>
 <body class='bg-slate-950 text-slate-100'>
-  <header class='max-w-6xl mx-auto px-6 py-5 flex items-center justify-between'>
-    <div class='text-xl font-bold tracking-tight'>Missoula Website Co</div>
-    <nav class='text-sm text-slate-300 space-x-5'>
+  <header class='max-w-6xl mx-auto px-6 py-5 flex items-center justify-between gap-4'>
+    <div class='flex items-center gap-3 brand-font'>
+      <svg width='34' height='34' viewBox='0 0 34 34' aria-hidden='true'><defs><linearGradient id='rg3' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='#06B6D4'/><stop offset='100%' stop-color='#14532D'/></linearGradient></defs><rect x='1' y='1' width='32' height='32' rx='10' fill='#0F172A' stroke='#334155'/><path d='M6 22c5-8 9-8 13 0 3-5 6-6 9-6' stroke='url(#rg3)' stroke-width='2.5' fill='none' stroke-linecap='round'/></svg>
+      <div><div class='text-lg font-bold tracking-tight'>Missoula Website</div><div class='text-[11px] text-slate-400 -mt-0.5'>River + Ridge Studio</div></div>
+    </div>
+    <nav class='text-sm text-slate-300 flex flex-wrap gap-4'>
       <a class='hover:text-white' href='index.html'>Home</a>
       <a class='hover:text-white' href='services.html'>Services</a>
       <a class='hover:text-white' href='contact.html'>Contact</a>
@@ -18,14 +25,14 @@
 
   <main class='max-w-6xl mx-auto px-6 pb-16'>
     <section class='rounded-2xl border border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 p-8 md:p-12'>
-      <p class='inline-flex items-center rounded-full border border-cyan-400/40 bg-cyan-400/10 px-3 py-1 text-xs font-semibold text-cyan-300'>Monthly Plans</p>
-      <h1 class='mt-4 text-4xl md:text-5xl font-bold leading-tight'>Simple Monthly Website Pricing</h1>
-      <p class='mt-4 max-w-3xl text-slate-300'>No huge upfront project invoice. Pick a monthly plan and we tailor your build scope around one-day vs multi-day complexity.</p>
+      <p class='inline-flex items-center rounded-full border border-cyan-400/40 bg-cyan-400/10 px-3 py-1 text-xs font-semibold text-cyan-300'>Pricing</p>
+      <h1 class='mt-4 text-4xl md:text-5xl font-bold leading-tight'>Simple Pricing. No Surprise Tech Headaches.</h1>
+      <p class='mt-4 max-w-3xl text-slate-300'>Choose the package that fits your stage now. You can upgrade as your business grows.</p>
     </section>
 
     <section class='mt-8 grid gap-4 md:grid-cols-3'>
       <article class='rounded-xl border border-slate-800 bg-slate-900/70 p-6'>
-        <h2 class='text-xl font-semibold'>Launch Lite</h2>
+        <h2 class='text-xl font-semibold'>Starter</h2>
         <p class='mt-2 text-3xl font-bold'>$149<span class='text-base font-medium text-slate-400'>/mo</span></p>
         <p class='mt-1 text-sm text-slate-400'>+$199 setup</p>
         <ul class='mt-4 list-disc pl-5 text-slate-300 space-y-1 text-sm'>
@@ -43,7 +50,7 @@
         <p class='mt-1 text-sm text-slate-400'>+$299 setup</p>
         <ul class='mt-4 list-disc pl-5 text-slate-300 space-y-1 text-sm'>
           <li>Up to ~15 pages</li>
-          <li>Everything in Launch Lite</li>
+          <li>Everything in Starter</li>
           <li>3–5 edits per month</li>
           <li>Ongoing local SEO maintenance</li>
           <li>Quarterly performance tune-up</li>
@@ -51,7 +58,7 @@
       </article>
 
       <article class='rounded-xl border border-slate-800 bg-slate-900/70 p-6'>
-        <h2 class='text-xl font-semibold'>Pro / Commerce</h2>
+        <h2 class='text-xl font-semibold'>Pro + Care</h2>
         <p class='mt-2 text-3xl font-bold'>$499<span class='text-base font-medium text-slate-400'>/mo</span></p>
         <p class='mt-1 text-sm text-slate-400'>+$499 setup</p>
         <ul class='mt-4 list-disc pl-5 text-slate-300 space-y-1 text-sm'>
@@ -63,6 +70,12 @@
       </article>
     </section>
 
+    <section class='mt-8 grid gap-3 md:grid-cols-3'>
+      <img src='https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200' alt='Small business owner reviewing website analytics' class='w-full h-40 object-cover rounded-xl border border-slate-800' />
+      <img src='https://images.pexels.com/photos/6476258/pexels-photo-6476258.jpeg?auto=compress&cs=tinysrgb&w=1200' alt='Team discussing monthly growth plan' class='w-full h-40 object-cover rounded-xl border border-slate-800' />
+      <img src='https://images.pexels.com/photos/7681091/pexels-photo-7681091.jpeg?auto=compress&cs=tinysrgb&w=1200' alt='Website planning and service proposal notes' class='w-full h-40 object-cover rounded-xl border border-slate-800' />
+    </section>
+
     <section class='mt-8 rounded-xl border border-slate-800 bg-slate-900/60 p-6'>
       <h3 class='text-lg font-semibold'>Scope & Terms (simple)</h3>
       <ul class='mt-3 list-disc pl-5 text-slate-300 space-y-1 text-sm'>
@@ -72,9 +85,16 @@
         <li>Custom integrations and large redesigns are quoted separately when needed.</li>
       </ul>
       <div class='mt-5'>
-        <a class='inline-flex items-center rounded-lg bg-cyan-400 px-4 py-2.5 font-semibold text-slate-900 hover:bg-cyan-300' href='index.html#intake'>Start Intake & Get Plan Fit</a>
+        <a class='inline-flex items-center rounded-lg bg-cyan-400 px-4 py-2.5 font-semibold text-slate-900 hover:bg-cyan-300' href='index.html#intake'>Get My Recommendation</a>
       </div>
     </section>
   </main>
+  <footer class='border-t border-slate-800 mt-10'>
+    <div class='max-w-6xl mx-auto px-6 py-8 grid gap-6 md:grid-cols-3 text-sm'>
+      <div><div class='brand-font font-bold text-slate-100'>Missoula Website</div><p class='text-slate-400 mt-2'>Simple monthly plans for local businesses.</p></div>
+      <div><div class='font-semibold text-slate-200'>Links</div><div class='mt-2 space-y-1 text-slate-400'><a class='block hover:text-white' href='index.html'>Home</a><a class='block hover:text-white' href='services.html'>Services</a><a class='block hover:text-white' href='contact.html'>Contact</a></div></div>
+      <div><div class='font-semibold text-slate-200'>Social</div><div class='mt-2 flex gap-3 text-slate-400'><a href='#'>𝕏</a><a href='#'>in</a><a href='#'>f</a></div></div>
+    </div>
+  </footer>
 </body>
 </html>

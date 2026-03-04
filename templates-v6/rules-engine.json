@@ -1,0 +1,10 @@
+{
+  "archetypeRules": [
+    {"when": {"businessTypeIncludes": ["roof", "hvac", "plumb", "repair", "contractor"], "featuresAny": ["booking"]}, "archetype": "utility-dashboard"},
+    {"when": {"businessTypeIncludes": ["law", "attorney", "legal"]}, "archetype": "editorial-story"},
+    {"when": {"businessTypeIncludes": ["coach", "fitness", "course"], "pageCountAny": ["1-3"]}, "archetype": "offer-funnel"},
+    {"when": {"featuresAny": ["ecommerce", "payments"]}, "archetype": "asymmetric-bento"},
+    {"when": {"businessTypeIncludes": ["dent", "clinic", "med", "spa"]}, "archetype": "split-screen"}
+  ],
+  "defaultArchetype": "split-screen"
+}
