@@ -1,201 +1,214 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-  <meta charset='utf-8'/>
-  <meta name='viewport' content='width=device-width,initial-scale=1'/>
-  <title>Missoula Website Co | Websites That Help Missoula Businesses Get More Calls</title>
-  <script src='https://cdn.tailwindcss.com'></script>
-  <link rel='preconnect' href='https://fonts.googleapis.com'>
-  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
-  <link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap' rel='stylesheet'>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: '#22d3ee'
-          }
-        }
-      }
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Missoula Website Co | Web Design & Development in Missoula</title>
+  <meta name="description" content="Missoula Website Co builds attractive, high-performing websites for Montana businesses that want more calls, leads, and booked work."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#12212b;
+      --ink-soft:#344956;
+      --paper:#f5f3ee;
+      --sand:#d8c8ab;
+      --pine:#29523f;
+      --pine-deep:#1b3a2c;
+      --sun:#d9964e;
+      --line:#d8d2c7;
     }
-  </script>
+
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:"Plus Jakarta Sans",sans-serif;line-height:1.55}
+    a{text-decoration:none;color:inherit}
+
+    .hero{
+      min-height:100svh;
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      align-items:flex-end;
+      padding:clamp(20px,5vw,64px);
+      isolation:isolate;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(112deg, rgba(18,33,43,.78) 12%, rgba(18,33,43,.36) 58%, rgba(18,33,43,.62) 100%),
+        url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2200&q=80');
+      background-size:cover;
+      background-position:center;
+      transform:scale(1.04);
+      animation:heroDrift 16s ease-in-out infinite alternate;
+      z-index:-2;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at 16% 25%, rgba(217,150,78,.24), transparent 48%);
+      z-index:-1;
+      animation:glowPulse 7s ease-in-out infinite;
+    }
+
+    @keyframes heroDrift{from{transform:scale(1.04) translateY(0)}to{transform:scale(1.09) translateY(-8px)}}
+    @keyframes glowPulse{0%,100%{opacity:.38}50%{opacity:.58}}
+
+    .hero-inner{max-width:840px;color:#f8f6f1}
+    .brand{
+      margin:0;
+      font-family:"Syne",sans-serif;
+      font-weight:800;
+      letter-spacing:.02em;
+      font-size:clamp(48px,11vw,132px);
+      line-height:.9;
+      opacity:0;
+      transform:translateY(22px);
+      animation:rise .72s .08s forwards;
+    }
+    .headline{
+      margin:14px 0 12px;
+      max-width:15ch;
+      font-family:"Syne",sans-serif;
+      font-size:clamp(28px,4.4vw,58px);
+      line-height:1.02;
+      font-weight:700;
+      opacity:0;
+      transform:translateY(22px);
+      animation:rise .72s .22s forwards;
+    }
+    .support{
+      margin:0;
+      max-width:49ch;
+      font-size:clamp(16px,1.7vw,21px);
+      opacity:.95;
+      opacity:0;
+      transform:translateY(22px);
+      animation:rise .72s .34s forwards;
+    }
+    .cta{
+      margin-top:24px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      opacity:0;
+      transform:translateY(22px);
+      animation:rise .72s .48s forwards;
+    }
+
+    @keyframes rise{to{opacity:1;transform:translateY(0)}}
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:999px;
+      padding:12px 20px;
+      font-weight:700;
+      transition:transform .2s ease, background .2s ease, color .2s ease;
+      border:1.5px solid transparent;
+    }
+    .btn-primary{background:var(--sun);color:#2a1b0c}
+    .btn-secondary{background:transparent;color:#f8f6f1;border-color:rgba(248,246,241,.78)}
+    .btn:hover{transform:translateY(-2px)}
+
+    section{padding:clamp(44px,7vw,92px) clamp(20px,5vw,70px)}
+    .wrap{max-width:1060px;margin:0 auto}
+    h2{margin:0 0 10px;font-family:"Syne",sans-serif;font-size:clamp(30px,4.4vw,54px);line-height:1.05}
+    .lead{margin:0;max-width:60ch;color:var(--ink-soft);font-size:clamp(16px,1.5vw,20px)}
+
+    .services-list{margin:24px 0 0;padding:0;list-style:none;display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    .services-list li{padding:0 0 12px;border-bottom:1px solid var(--line);font-family:"Syne",sans-serif;font-weight:600}
+
+    .process{background:linear-gradient(132deg,#f1eee7,#ece8df)}
+    .steps{margin-top:24px;display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    .steps p{margin:0;color:var(--ink-soft)}
+    .steps strong{font-family:"Syne",sans-serif;color:var(--ink)}
+
+    .contact{background:#fff}
+    .contact form{max-width:680px;margin-top:20px}
+    label{display:block;font-weight:700;margin:12px 0 6px}
+    input,textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;font:inherit;background:#fdfcf9}
+    textarea{min-height:120px;resize:vertical}
+    .submit{margin-top:14px;background:var(--pine);color:#fff}
+    .submit:hover{background:var(--pine-deep)}
+
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .62s ease, transform .62s ease}
+    .reveal.in{opacity:1;transform:translateY(0)}
+
+    @media (max-width:780px){
+      .hero{padding:18px 16px 26px}
+      .cta{gap:10px}
+    }
+  </style>
 </head>
-<body class='bg-slate-950 text-slate-100' style="background-image: linear-gradient(to bottom, rgba(2,6,23,0.78), rgba(15,23,42,0.96)), url('https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=2000'); background-size: cover; background-position: center top; background-attachment: fixed;">
-  <header class='max-w-6xl mx-auto px-6 py-5 flex items-center justify-between gap-4'>
-    <div class='flex items-center gap-3 brand-font'>
-      <svg width='34' height='34' viewBox='0 0 34 34' aria-hidden='true'><defs><linearGradient id='rg0' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='#06B6D4'/><stop offset='100%' stop-color='#14532D'/></linearGradient></defs><rect x='1' y='1' width='32' height='32' rx='10' fill='#0F172A' stroke='#334155'/><path d='M6 22c5-8 9-8 13 0 3-5 6-6 9-6' stroke='url(#rg0)' stroke-width='2.5' fill='none' stroke-linecap='round'/></svg>
-      <div><div class='text-lg font-bold tracking-tight'>Missoula Website</div><div class='text-[11px] text-slate-400 -mt-0.5'>River + Ridge Studio</div></div>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="brand">Missoula Website Co</p>
+      <h1 class="headline">Attractive websites built to win trust in under ten seconds.</h1>
+      <p class="support">We design and develop modern websites for local businesses that want stronger first impressions, clearer offers, and more qualified inquiries.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#contact">Start your site</a>
+        <a class="btn btn-secondary" href="#services">See services</a>
+      </div>
     </div>
-    <nav class='text-sm text-slate-300 flex flex-wrap gap-4'>
-      <a class='hover:text-white' href='services.html'>Services</a>
-      <a class='hover:text-white' href='pricing.html'>Pricing</a>
-      <a class='hover:text-white' href='contact.html'>Contact</a>
-    </nav>
   </header>
 
-  <section class='max-w-6xl mx-auto px-6 py-14'>
-    <div class='rounded-2xl border border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 p-8 md:p-12'>
-      <p class='inline-flex items-center rounded-full border border-cyan-400/40 bg-cyan-400/10 px-3 py-1 text-xs font-semibold text-cyan-300'>Missoula-based support</p>
-      <h1 class='mt-5 text-4xl md:text-5xl font-bold leading-tight'>Websites That Help Missoula Businesses Get More Calls</h1>
-      <p class='mt-4 text-slate-300 max-w-2xl'>We design, build, and host modern websites for local service businesses — fast, clear, and built to convert.</p>
-      <div class='mt-8 flex flex-wrap gap-3'>
-        <a class='inline-flex items-center rounded-lg bg-cyan-400 px-4 py-2.5 font-semibold text-slate-900 hover:bg-cyan-300 transition-colors' href='#intake'>Get a Free Quote</a>
-        <a class='inline-flex items-center rounded-lg border border-slate-700 px-4 py-2.5 font-semibold hover:bg-slate-900 transition-colors' href='pricing.html'>See Plans</a>
-      </div>
-      <div class='mt-6 rounded-xl overflow-hidden border border-slate-800'>
-        <img src='https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1600' alt='Local business team planning website content' class='w-full h-56 md:h-72 object-cover' />
+  <section id="services" class="reveal">
+    <div class="wrap">
+      <h2>Services focused on growth, not just launch.</h2>
+      <p class="lead">Every engagement is built around clarity, conversion, and long-term maintainability.</p>
+      <ul class="services-list">
+        <li>Website design & frontend development</li>
+        <li>Copy structure for service businesses</li>
+        <li>Lead capture and intake flow setup</li>
+        <li>Local SEO technical foundation</li>
+        <li>Performance and mobile optimization</li>
+        <li>Ongoing site updates and improvements</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="process reveal">
+    <div class="wrap">
+      <h2>A simple process that ships.</h2>
+      <p class="lead">One focused path from idea to launch, then iterative improvements based on real usage.</p>
+      <div class="steps">
+        <p><strong>1. Align:</strong> Define message, offer, and conversion target.</p>
+        <p><strong>2. Build:</strong> Design and develop the first production version.</p>
+        <p><strong>3. Improve:</strong> Refine pages and flows using incoming lead data.</p>
       </div>
     </div>
   </section>
 
-  <section class='max-w-6xl mx-auto px-6 pb-8'>
-    <div class='grid gap-4 md:grid-cols-3'>
-      <article class='rounded-xl border border-slate-800 bg-slate-900/60 p-5'>
-        <h2 class='text-lg font-semibold'>Done-for-you build</h2>
-        <p class='mt-2 text-sm text-slate-300'>Strategy, copy, design, launch, and support in one clear process.</p>
-      </article>
-      <article class='rounded-xl border border-slate-800 bg-slate-900/60 p-5'>
-        <h2 class='text-lg font-semibold'>Lead-focused pages</h2>
-        <p class='mt-2 text-sm text-slate-300'>Mobile-first layouts with clear CTAs to help turn visits into calls.</p>
-      </article>
-      <article class='rounded-xl border border-slate-800 bg-slate-900/60 p-5'>
-        <h2 class='text-lg font-semibold'>Reliable monthly care</h2>
-        <p class='mt-2 text-sm text-slate-300'>Hosting, security, backups, and ongoing edits without the tech stress.</p>
-      </article>
-    </div>
-
-    <div class='mt-6 rounded-xl border border-slate-800 bg-slate-900/40 p-5'>
-      <h2 class='text-xl font-semibold'>How it works</h2>
-      <ol class='mt-3 grid gap-2 md:grid-cols-3 text-sm text-slate-300'>
-        <li><span class='font-semibold text-slate-100'>1. Discover</span> — We learn your services, goals, and ideal customers.</li>
-        <li><span class='font-semibold text-slate-100'>2. Build</span> — We write, design, and launch your site with conversion in mind.</li>
-        <li><span class='font-semibold text-slate-100'>3. Grow</span> — We host, maintain, and improve your web presence over time.</li>
-      </ol>
-    </div>
-  </section>
-
-  <section id='intake' class='max-w-6xl mx-auto px-6 pb-16'>
-    <div class='rounded-2xl border border-slate-800 bg-slate-900/70 p-6 md:p-8'>
-      <h2 class='text-2xl font-bold'>Website Request Intake</h2>
-      <p class='mt-2 text-slate-400'>Tell us about your business and goals. We’ll recommend the right scope, timeline, and plan.</p>
-
-      <form id='intakeForm' class='mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm'>
-        <label class='space-y-1'>
-          <span class='text-slate-300'>Business name</span>
-          <input class='w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2' name='businessName' required />
-        </label>
-        <label class='space-y-1'>
-          <span class='text-slate-300'>Contact name</span>
-          <input class='w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2' name='contactName' required />
-        </label>
-        <label class='space-y-1'>
-          <span class='text-slate-300'>Email</span>
-          <input class='w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2' name='email' type='email' required />
-        </label>
-        <label class='space-y-1'>
-          <span class='text-slate-300'>Phone</span>
-          <input class='w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2' name='phone' />
-        </label>
-        <label class='space-y-1'>
-          <span class='text-slate-300'>Business type</span>
-          <input class='w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2' name='businessType' placeholder='e.g., plumbing, salon, contractor' required />
-        </label>
-        <label class='space-y-1'>
-          <span class='text-slate-300'>Target launch timeline</span>
-          <select class='w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2' name='timeline'>
-            <option value='one-day'>One day</option>
-            <option value='this-week'>This week</option>
-            <option value='flexible'>Flexible</option>
-          </select>
-        </label>
-        <label class='space-y-1'>
-          <span class='text-slate-300'>Approx page count</span>
-          <select class='w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2' name='pageCount'>
-            <option value='1-3'>1-3</option>
-            <option value='4-6'>4-6</option>
-            <option value='7-10'>7-10</option>
-            <option value='10+'>10+</option>
-          </select>
-        </label>
-        <label class='space-y-1'>
-          <span class='text-slate-300'>Need content writing?</span>
-          <select class='w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2' name='copywriting'>
-            <option value='yes'>Yes</option>
-            <option value='no'>No</option>
-          </select>
-        </label>
-        <label class='space-y-1'>
-          <span class='text-slate-300'>Preferred style template</span>
-          <select class='w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2' name='template'>
-            <option value='authority-pro'>Authority Pro</option>
-            <option value='bold-local'>Bold Local</option>
-            <option value='friendly-home'>Friendly Home Services</option>
-            <option value='minimal-modern'>Minimal Modern</option>
-            <option value='auto'>Auto-pick for me</option>
-          </select>
-        </label>
-
-        <div class='md:col-span-2'>
-          <p class='mb-2 text-slate-300'>Features needed</p>
-          <div class='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-slate-300'>
-            <label class='rounded-lg border border-slate-800 p-2'><input class='mr-2' type='checkbox' name='features' value='contact-form' checked />Contact form</label>
-            <label class='rounded-lg border border-slate-800 p-2'><input class='mr-2' type='checkbox' name='features' value='booking' />Booking/scheduling</label>
-            <label class='rounded-lg border border-slate-800 p-2'><input class='mr-2' type='checkbox' name='features' value='payments' />Payments</label>
-            <label class='rounded-lg border border-slate-800 p-2'><input class='mr-2' type='checkbox' name='features' value='ecommerce' />E-commerce</label>
-            <label class='rounded-lg border border-slate-800 p-2'><input class='mr-2' type='checkbox' name='features' value='crm' />CRM integration</label>
-            <label class='rounded-lg border border-slate-800 p-2'><input class='mr-2' type='checkbox' name='features' value='custom-design' />Fully custom design</label>
-          </div>
-        </div>
-
-        <label class='md:col-span-2 space-y-1'>
-          <span class='text-slate-300'>Anything else?</span>
-          <textarea class='w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2' name='notes' rows='4' placeholder='Goals, references, required pages, etc.'></textarea>
-        </label>
-
-        <div class='md:col-span-2 flex items-center gap-3'>
-          <button class='inline-flex items-center rounded-lg bg-cyan-400 px-4 py-2.5 font-semibold text-slate-900 hover:bg-cyan-300' type='submit'>Submit Request</button>
-          <span id='statusMsg' class='text-slate-400'></span>
-        </div>
+  <section id="contact" class="contact reveal">
+    <div class="wrap">
+      <h2>Tell us what this site needs to do.</h2>
+      <p class="lead">Share the business, offer, and goal. We’ll reply with a concrete next step.</p>
+      <form onsubmit="event.preventDefault(); window.location.href='contact.html';">
+        <label>Business name</label>
+        <input required placeholder="Your business name"/>
+        <label>Email</label>
+        <input type="email" required placeholder="you@business.com"/>
+        <label>Project goal</label>
+        <textarea required placeholder="What should this website help you get more of?"></textarea>
+        <button class="btn submit" type="submit">Send project brief</button>
       </form>
     </div>
   </section>
 
-  <footer class='border-t border-slate-800 mt-10'>
-    <div class='max-w-6xl mx-auto px-6 py-8 grid gap-6 md:grid-cols-3 text-sm'>
-      <div><div class='brand-font font-bold text-slate-100'>Missoula Website</div><p class='text-slate-400 mt-2'>Local-first website design, hosting, and growth support.</p></div>
-      <div><div class='font-semibold text-slate-200'>Links</div><div class='mt-2 space-y-1 text-slate-400'><a class='block hover:text-white' href='services.html'>Services</a><a class='block hover:text-white' href='pricing.html'>Pricing</a><a class='block hover:text-white' href='contact.html'>Contact</a></div></div>
-      <div><div class='font-semibold text-slate-200'>Follow</div><div class='mt-2 flex gap-3 text-slate-400'><a href='#'>𝕏</a><a href='#'>in</a><a href='#'>f</a></div></div>
-    </div>
-  </footer>
-
   <script>
-    const form = document.getElementById('intakeForm');
-    const statusMsg = document.getElementById('statusMsg');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      statusMsg.textContent = 'Submitting...';
-
-      const fd = new FormData(form);
-      const features = fd.getAll('features');
-      const payload = Object.fromEntries(fd.entries());
-      payload.features = features;
-
-      const res = await fetch('/api/intake', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-
-      if (!res.ok) {
-        statusMsg.textContent = 'Something went wrong. Please try again.';
-        return;
-      }
-
-      const data = await res.json();
-      statusMsg.textContent = `Submitted. Estimated complexity: ${data.complexity} (${data.feasibility}).`;
-      form.reset();
-    });
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach((entry)=>{ if(entry.isIntersecting) entry.target.classList.add('in'); });
+    },{threshold:.2});
+    document.querySelectorAll('.reveal').forEach((el)=>io.observe(el));
   </script>
 </body>
 </html>
