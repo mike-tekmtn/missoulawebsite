@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Design 10 — Editorial Poster</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#121f2a;--paper:#f1ece3;--accent:#ce6f3b;--line:#cfc4b3}*{box-sizing:border-box}body{margin:0;font-family:"Instrument Sans",sans-serif;background:var(--paper);color:var(--ink)}
+.hero{min-height:100svh;position:relative;overflow:hidden;display:grid;align-items:end;padding:clamp(20px,5vw,66px)}
+.hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(100deg,rgba(18,31,42,.78),rgba(18,31,42,.22) 58%,rgba(18,31,42,.52)),url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2400&q=80');background-size:cover;background-position:center;transform:scale(1.03);animation:drift 18s ease-in-out infinite alternate;z-index:-2}
+@keyframes drift{from{transform:scale(1.03)}to{transform:scale(1.09)}}
+.block{max-width:980px;color:#f9f6f0}
+.brand{font-family:"Bebas Neue",sans-serif;font-size:clamp(72px,15vw,220px);line-height:.78;margin:0;letter-spacing:.02em}
+.head{font-size:clamp(26px,4vw,58px);line-height:.95;max-width:11ch;margin:8px 0 12px;font-weight:700}
+.sub{max-width:45ch;margin:0;font-size:clamp(16px,1.7vw,21px)}
+.cta{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap}.btn{padding:12px 18px;border-radius:999px;text-decoration:none;font-weight:700}.a{background:var(--accent);color:#2f1708}.b{border:1.5px solid rgba(249,246,240,.8);color:#f9f6f0}
+section{padding:clamp(42px,7vw,88px) clamp(20px,5vw,68px)}.w{max-width:1040px;margin:0 auto}h2{font-size:clamp(30px,4vw,52px);margin:0 0 10px;font-family:"Bebas Neue",sans-serif;letter-spacing:.01em}.lead{max-width:58ch;color:#425766}
+.list{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-top:22px}.list p{margin:0;padding-bottom:12px;border-bottom:1px solid var(--line);font-weight:600}
+.process{background:linear-gradient(130deg,#e8e0d2,#e2d9ca)} .steps{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:20px}
+.contact{background:#fff} form{max-width:680px;margin-top:18px} label{display:block;font-weight:700;margin:10px 0 6px} input,textarea{width:100%;padding:12px;border:1px solid #d7ccbb;border-radius:10px} textarea{min-height:120px}
+</style></head><body>
+<header class="hero"><div class="block"><p class="brand">POSTER MODE</p><h1 class="head">Missoula Website Co builds websites with instant authority.</h1><p class="sub">A bold, high-contrast visual system for local brands that need to look serious fast and convert cleaner.</p><div class="cta"><a class="btn a" href="#contact">Start build</a><a class="btn b" href="#services">See offer</a></div></div></header>
+<section id="services"><div class="w"><h2>Built for impact and clarity.</h2><p class="lead">No filler sections. Just hierarchy, intent, and action.</p><div class="list"><p>Brand-led homepage composition</p><p>Service-page conversion architecture</p><p>Lead intake and qualification UX</p><p>Performance + local SEO foundation</p></div></div></section>
+<section class="process"><div class="w"><h2>Three steps. Ship fast.</h2><div class="steps"><p><strong>1. Position</strong><br/>We define your sharpest message.</p><p><strong>2. Build</strong><br/>Design + frontend execution.</p><p><strong>3. Improve</strong><br/>Optimize from real lead data.</p></div></div></section>
+<section id="contact" class="contact"><div class="w"><h2>Send the project brief.</h2><form onsubmit="event.preventDefault();window.location.href='contact.html';"><label>Business</label><input required><label>Email</label><input type="email" required><label>Main goal</label><textarea required></textarea><button class="btn a" type="submit">Submit</button></form></div></section>
+</body></html>
