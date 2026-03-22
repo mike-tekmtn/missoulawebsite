@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Missoula Website Co | Concept 4 — Alpine Cinematic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#101a21;--fog:#e9edf0;--pine:#24483c;--copper:#c9844e;--line:#cfd7db}
+    *{box-sizing:border-box} body{margin:0;font-family:"Manrope",sans-serif;background:var(--fog);color:var(--ink)}
+    .hero{min-height:100svh;position:relative;display:flex;align-items:flex-end;padding:clamp(24px,6vw,76px);overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(115deg,rgba(16,26,33,.82),rgba(16,26,33,.35) 55%,rgba(16,26,33,.66)),url('https://images.unsplash.com/photo-1519817650390-64a93db511aa?auto=format&fit=crop&w=2200&q=80');background-size:cover;background-position:center;transform:scale(1.04);animation:zoom 18s ease-in-out infinite alternate;z-index:-2}
+    .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 14% 18%,rgba(201,132,78,.28),transparent 42%);z-index:-1;animation:pulse 8s ease-in-out infinite}
+    @keyframes zoom{from{transform:scale(1.04)}to{transform:scale(1.1)}} @keyframes pulse{0%,100%{opacity:.4}50%{opacity:.65}}
+    .inner{max-width:850px;color:#f4f8f7}
+    .brand{margin:0;font-family:"Cormorant Garamond",serif;font-size:clamp(52px,11vw,136px);line-height:.86;font-weight:700;letter-spacing:.01em;opacity:0;transform:translateY(16px);animation:rise .72s .08s forwards}
+    .headline{margin:14px 0 10px;max-width:14ch;font-family:"Cormorant Garamond",serif;font-size:clamp(34px,5vw,70px);line-height:.92;font-weight:600;opacity:0;transform:translateY(16px);animation:rise .72s .24s forwards}
+    .sub{margin:0;max-width:50ch;font-size:clamp(16px,1.7vw,21px);opacity:0;transform:translateY(16px);animation:rise .72s .38s forwards}
+    .cta{margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;opacity:0;transform:translateY(16px);animation:rise .72s .52s forwards}
+    @keyframes rise{to{opacity:1;transform:none}}
+    .btn{display:inline-flex;padding:12px 20px;border-radius:999px;text-decoration:none;font-weight:700;transition:transform .2s}
+    .btn:hover{transform:translateY(-2px)} .primary{background:var(--copper);color:#2c1709}.ghost{border:1.5px solid rgba(244,248,247,.78);color:#f4f8f7}
+    section{padding:clamp(44px,7vw,92px) clamp(20px,5vw,72px)} .wrap{max-width:1040px;margin:0 auto}
+    h2{margin:0 0 10px;font-family:"Cormorant Garamond",serif;font-size:clamp(32px,4.2vw,56px);line-height:1}
+    .lead{margin:0;max-width:58ch;color:#334a56;font-size:clamp(16px,1.45vw,20px)}
+    .list{margin:24px 0 0;padding:0;list-style:none;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+    .list li{border-bottom:1px solid var(--line);padding:0 0 12px;font-weight:600}
+    .method{background:linear-gradient(126deg,#e2e8ec,#dbe3e8)} .steps{margin-top:22px;display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    .steps p{margin:0;color:#3d5563}.steps strong{font-family:"Cormorant Garamond",serif;font-size:1.25rem;color:#10222d}
+    .contact{background:#fff} form{max-width:680px;margin-top:20px} label{display:block;font-weight:700;margin:12px 0 6px}
+    input,textarea{width:100%;padding:12px;border:1px solid #d4dde2;border-radius:12px;background:#fbfdfe;font:inherit} textarea{min-height:120px}
+    .submit{margin-top:14px;background:var(--pine);color:#fff;border:none;cursor:pointer}
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .62s ease,transform .62s ease}.reveal.in{opacity:1;transform:none}
+  </style>
+</head>
+<body>
+<header class="hero"><div class="inner"><p class="brand">Missoula Website Co</p><h1 class="headline">Websites with cinematic presence and measurable conversion intent.</h1><p class="sub">We build visually striking sites for local businesses that need trust fast, message clarity, and stronger lead flow.</p><div class="cta"><a class="btn primary" href="#contact">Start a project</a><a class="btn ghost" href="#services">See capabilities</a></div></div></header>
+<section id="services" class="reveal"><div class="wrap"><h2>Built to be remembered and acted on.</h2><p class="lead">Every page is structured to make the next decision easier for your best-fit customer.</p><ul class="list"><li>Brand-first homepage systems</li><li>Service page architecture</li><li>Lead intake design + implementation</li><li>Performance and local SEO baseline</li></ul></div></section>
+<section class="method reveal"><div class="wrap"><h2>Lean process, premium output.</h2><p class="lead">Focused sequence: define, ship, refine.</p><div class="steps"><p><strong>1. Define</strong>Offer clarity and conversion path.</p><p><strong>2. Produce</strong>Design + development in one flow.</p><p><strong>3. Refine</strong>Improve with real behavior data.</p></div></div></section>
+<section id="contact" class="contact reveal"><div class="wrap"><h2>Tell us what your website should do better.</h2><p class="lead">Share the bottleneck. We’ll respond with a concrete next step.</p><form onsubmit="event.preventDefault(); window.location.href='contact.html';"><label>Business</label><input required><label>Email</label><input type="email" required><label>Main goal</label><textarea required></textarea><button class="btn submit" type="submit">Send brief</button></form></div></section>
+<script>const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.2});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));</script>
+</body></html>
