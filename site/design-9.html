@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Missoula Website Co | Concept 9 — SIGNAL/CRAFT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;900&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#12212c;--paper:#f3efe6;--olive:#4e6648;--brick:#b4653e;--line:#d6cebf}
+*{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font-family:"Chivo",sans-serif}
+.hero{min-height:100svh;position:relative;display:flex;align-items:flex-end;padding:clamp(22px,6vw,76px);overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(111deg,rgba(18,33,44,.82),rgba(18,33,44,.3) 56%,rgba(18,33,44,.66)),url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2400&q=80');background-size:cover;background-position:center;transform:scale(1.04);animation:hero 19s ease-in-out infinite alternate;z-index:-2}
+.hero:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 22%,rgba(180,101,62,.28),transparent 46%);z-index:-1;animation:blink 8s ease-in-out infinite}
+@keyframes hero{from{transform:scale(1.04)}to{transform:scale(1.1)}} @keyframes blink{0%,100%{opacity:.34}50%{opacity:.58}}
+.inner{max-width:860px;color:#f8f4ec}
+.brand{margin:0;font-family:"Literata",serif;font-size:clamp(52px,11vw,134px);line-height:.85;font-weight:700;opacity:0;transform:translateY(18px);animation:rise .68s .08s forwards}
+.h{margin:14px 0 10px;max-width:14ch;font-family:"Literata",serif;font-size:clamp(31px,4.9vw,62px);line-height:.95;opacity:0;transform:translateY(18px);animation:rise .68s .24s forwards}
+.s{margin:0;max-width:50ch;font-size:clamp(16px,1.65vw,21px);opacity:0;transform:translateY(18px);animation:rise .68s .36s forwards}
+.cta{margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;opacity:0;transform:translateY(18px);animation:rise .68s .5s forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+.btn{display:inline-flex;padding:12px 20px;border-radius:999px;text-decoration:none;font-weight:700;transition:transform .2s}.btn:hover{transform:translateY(-2px)}
+.a{background:var(--brick);color:#2f1609}.b{border:1.5px solid rgba(248,244,236,.78);color:#f8f4ec}
+section{padding:clamp(44px,7vw,92px) clamp(20px,5vw,72px)} .w{max-width:1040px;margin:0 auto}
+h2{margin:0 0 10px;font-family:"Literata",serif;font-size:clamp(31px,4.2vw,54px);line-height:1}
+.lead{margin:0;max-width:58ch;color:#405866;font-size:clamp(16px,1.45vw,20px)}
+.list{margin-top:24px;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(235px,1fr))}
+.list p{margin:0;padding:0 0 12px;border-bottom:1px solid var(--line);font-weight:600}
+.process{background:linear-gradient(128deg,#ebe4d7,#e4dccf)} .steps{margin-top:20px;display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.steps p{margin:0;color:#455c68}.steps strong{display:block}
+.contact{background:#fff} form{max-width:680px;margin-top:20px} label{display:block;font-weight:700;margin:12px 0 6px}
+input,textarea{width:100%;padding:12px;border:1px solid #d8cfbf;border-radius:10px;background:#fdfbf7;font:inherit} textarea{min-height:120px}
+.submit{margin-top:14px;background:var(--olive);color:#fff;border:none;cursor:pointer}
+.reveal{opacity:0;transform:translateY(16px);transition:.62s}.reveal.in{opacity:1;transform:none}
+</style></head><body>
+<header class="hero"><div class="inner"><p class="brand">SIGNAL/CRAFT</p><h1 class="h">Missoula Website Co turns brand clarity into lead momentum.</h1><p class="s">We build intentional website systems for businesses that need stronger first impressions and cleaner conversion paths.</p><div class="cta"><a class="btn a" href="#contact">Start now</a><a class="btn b" href="#services">Explore process</a></div></div></header>
+<section id="services" class="reveal"><div class="w"><h2>Design with business consequence.</h2><p class="lead">Not decoration—clear hierarchy, sharper message, and better next actions.</p><div class="list"><p>Positioned homepage composition</p><p>Service pages with conversion hierarchy</p><p>Inquiry and intake UX improvements</p><p>Performance + local discoverability setup</p></div></div></section>
+<section class="process reveal"><div class="w"><h2>Execution that stays focused.</h2><p class="lead">A practical structure from idea to launch to iteration.</p><div class="steps"><p><strong>1. Direction</strong>Align on audience and offer priority.</p><p><strong>2. Build</strong>Design and development in one cycle.</p><p><strong>3. Refine</strong>Improve based on lead quality data.</p></div></div></section>
+<section id="contact" class="contact reveal"><div class="w"><h2>Send the brief. We’ll map the route.</h2><p class="lead">Tell us where your current site is falling short.</p><form onsubmit="event.preventDefault(); window.location.href='contact.html';"><label>Business</label><input required><label>Email</label><input type="email" required><label>Core objective</label><textarea required></textarea><button class="btn submit" type="submit">Submit brief</button></form></div></section>
+<script>const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.2});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));</script>
+</body></html>

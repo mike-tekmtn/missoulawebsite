@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Missoula Website Co | Design Concept 3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#13232f;--fog:#ecf1f3;--teal:#2f7a72;--rust:#b86f4a;--line:#ccd7dc}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:"DM Sans",sans-serif;background:var(--fog);color:var(--ink)}
+
+    .hero{min-height:100svh;position:relative;display:flex;align-items:flex-end;padding:clamp(20px,6vw,74px);overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(106deg,rgba(19,35,47,.78),rgba(19,35,47,.22) 52%,rgba(19,35,47,.56)),url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=2200&q=80');background-size:cover;background-position:center;transform:scale(1.03);animation:floatZoom 20s ease-in-out infinite alternate;z-index:-2}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(19,35,47,.18),transparent 45%);z-index:-1}
+    @keyframes floatZoom{from{transform:scale(1.03) translateX(0)}to{transform:scale(1.08) translateX(-6px)}}
+
+    .content{max-width:830px;color:#f4f8fa}
+    .brand{margin:0;font-family:"Fraunces",serif;font-size:clamp(46px,10.5vw,122px);line-height:.92;font-weight:700;opacity:0;transform:translateY(16px);animation:lift .7s .1s forwards}
+    .headline{margin:14px 0 12px;font-family:"Fraunces",serif;font-size:clamp(30px,4.8vw,60px);line-height:1.02;max-width:15ch;opacity:0;transform:translateY(16px);animation:lift .7s .24s forwards}
+    .support{margin:0;max-width:50ch;font-size:clamp(16px,1.7vw,21px);opacity:.96;opacity:0;transform:translateY(16px);animation:lift .7s .38s forwards}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;opacity:0;transform:translateY(16px);animation:lift .7s .5s forwards}
+    @keyframes lift{to{opacity:1;transform:translateY(0)}}
+
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 20px;border-radius:999px;font-weight:700;text-decoration:none;transition:transform .2s ease}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:var(--teal);color:#e9fbf8}
+    .btn-secondary{border:1.5px solid rgba(233,251,248,.72);color:#e9fbf8}
+
+    section{padding:clamp(46px,7.3vw,94px) clamp(20px,5vw,72px)}
+    .wrap{max-width:1040px;margin:0 auto}
+    h2{margin:0 0 10px;font-family:"Fraunces",serif;font-size:clamp(30px,4.1vw,50px);line-height:1.06}
+    .lead{margin:0;max-width:58ch;color:#3f5664;font-size:clamp(16px,1.45vw,20px)}
+
+    .stack{margin-top:24px;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    .stack div{padding:0 0 12px;border-bottom:1px solid var(--line);font-weight:600}
+
+    .method{background:linear-gradient(120deg,#e4ebee,#dce5e8)}
+    .method-list{margin-top:22px;display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    .method-list p{margin:0;color:#425b69}
+    .method-list strong{font-family:"Fraunces",serif;color:#12222f}
+
+    .contact{background:#fff}
+    form{max-width:680px;margin-top:22px}
+    label{display:block;font-weight:700;margin:12px 0 6px}
+    input,textarea{width:100%;padding:12px;border:1px solid #d3dde2;border-radius:12px;background:#fbfdfe;font:inherit}
+    textarea{min-height:120px}
+    .submit{margin-top:14px;background:var(--rust);color:#fff;border:none;cursor:pointer}
+
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.in{opacity:1;transform:none}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="content">
+      <p class="brand">Missoula Website Co</p>
+      <h1 class="headline">Websites that feel premium and convert like sales tools.</h1>
+      <p class="support">We build strategic websites for service businesses that need stronger authority, clearer offers, and better inquiry flow.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#contact">Request a proposal</a>
+        <a class="btn btn-secondary" href="#services">View capabilities</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="services" class="reveal">
+    <div class="wrap">
+      <h2>Built for attention, trust, and action.</h2>
+      <p class="lead">A focused site system designed to reduce friction and help the right customers take the next step.</p>
+      <div class="stack">
+        <div>Brand-positioned homepage architecture</div>
+        <div>Service pages with persuasive structure</div>
+        <div>Lead-capture and intake optimization</div>
+        <div>Technical SEO and speed fundamentals</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="method reveal">
+    <div class="wrap">
+      <h2>One clear build path.</h2>
+      <p class="lead">No bloat, no vague process. Just defined stages and visible progress.</p>
+      <div class="method-list">
+        <p><strong>1. Strategy</strong>Define your conversion goal and message hierarchy.</p>
+        <p><strong>2. Execution</strong>Design and develop the launch-ready version.</p>
+        <p><strong>3. Refinement</strong>Improve with real lead behavior and analytics.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact reveal">
+    <div class="wrap">
+      <h2>Start with your biggest website bottleneck.</h2>
+      <p class="lead">Send a short project brief and we’ll respond with a practical scope recommendation.</p>
+      <form onsubmit="event.preventDefault(); window.location.href='contact.html';">
+        <label>Business</label>
+        <input required placeholder="Business name"/>
+        <label>Email</label>
+        <input type="email" required placeholder="you@company.com"/>
+        <label>What needs to improve most?</label>
+        <textarea required placeholder="Tell us the specific issue you want your new site to solve."></textarea>
+        <button class="btn submit" type="submit">Submit brief</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    const observer = new IntersectionObserver((entries)=>entries.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.2});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>

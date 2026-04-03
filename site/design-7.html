@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Missoula Website Co | Concept 7 — RIDGELINE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0f1f2b;--fog:#edf2f5;--steel:#2d556e;--sun:#e48b3f;--line:#c8d6df}
+*{box-sizing:border-box} body{margin:0;font-family:"Work Sans",sans-serif;background:var(--fog);color:var(--ink)}
+.hero{min-height:100svh;position:relative;display:grid;place-items:end start;padding:clamp(20px,6vw,78px);overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(108deg,rgba(15,31,43,.84),rgba(15,31,43,.28) 58%,rgba(15,31,43,.64)),url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=2400&q=80');background-size:cover;background-position:center;transform:scale(1.04);animation:z 18s ease-in-out infinite alternate;z-index:-2}
+@keyframes z{from{transform:scale(1.04)}to{transform:scale(1.1)}}
+.hero-inner{max-width:920px;color:#f6fafc}
+.brand{margin:0;font-family:"Anton",sans-serif;font-size:clamp(62px,13vw,168px);line-height:.84;letter-spacing:.01em;opacity:0;transform:translateY(20px);animation:in .7s .08s forwards}
+.h{margin:12px 0 10px;max-width:13ch;font-size:clamp(28px,5vw,66px);line-height:.94;font-weight:700;opacity:0;transform:translateY(20px);animation:in .7s .22s forwards}
+.s{margin:0;max-width:50ch;font-size:clamp(16px,1.7vw,21px);opacity:0;transform:translateY(20px);animation:in .7s .35s forwards}
+.cta{margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;opacity:0;transform:translateY(20px);animation:in .7s .48s forwards}
+@keyframes in{to{opacity:1;transform:none}}
+.btn{display:inline-flex;padding:12px 20px;border-radius:999px;text-decoration:none;font-weight:700;transition:transform .2s}.btn:hover{transform:translateY(-2px)}
+.a{background:var(--sun);color:#331b08}.b{border:1.5px solid rgba(246,250,252,.8);color:#f6fafc}
+section{padding:clamp(44px,7vw,94px) clamp(20px,5vw,74px)} .w{max-width:1060px;margin:0 auto}
+h2{margin:0 0 10px;font-size:clamp(30px,4.3vw,54px);line-height:1;font-family:"Anton",sans-serif;letter-spacing:.01em}
+.lead{margin:0;max-width:58ch;color:#3d5564;font-size:clamp(16px,1.45vw,20px)}
+.lines{margin-top:24px;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.lines p{margin:0;padding:0 0 12px;border-bottom:1px solid var(--line);font-weight:600}
+.process{background:linear-gradient(132deg,#e4ebf0,#dde7ee)} .steps{margin-top:20px;display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.steps p{margin:0;color:#415968}.steps strong{display:block;font-size:1.05rem}
+.contact{background:#fff} form{max-width:680px;margin-top:20px} label{display:block;font-weight:700;margin:12px 0 6px}
+input,textarea{width:100%;padding:12px;border:1px solid #d0dce4;border-radius:10px;background:#fbfdff;font:inherit} textarea{min-height:120px}
+.submit{margin-top:14px;background:var(--steel);color:#fff;border:none;cursor:pointer}
+.reveal{opacity:0;transform:translateY(16px);transition:.62s}.reveal.in{opacity:1;transform:none}
+</style></head><body>
+<header class="hero"><div class="hero-inner"><p class="brand">RIDGELINE</p><h1 class="h">Missoula Website Co builds digital storefronts people trust instantly.</h1><p class="s">Brand-led websites for local businesses that need to look premium and convert visits into real conversations.</p><div class="cta"><a class="btn a" href="#contact">Book strategy call</a><a class="btn b" href="#services">See what we build</a></div></div></header>
+<section id="services" class="reveal"><div class="w"><h2>What this studio is built for</h2><p class="lead">Clear positioning, modern frontend execution, and conversion-focused structure.</p><div class="lines"><p>Brand-centered homepage systems</p><p>Service-page information architecture</p><p>Lead flow and intake UX</p><p>Performance + technical SEO baseline</p></div></div></section>
+<section class="process reveal"><div class="w"><h2>One process. No fluff.</h2><p class="lead">Define, build, and optimize with measurable intent.</p><div class="steps"><p><strong>1. Position</strong>Message and offer clarity.</p><p><strong>2. Produce</strong>Design + development in one sprint.</p><p><strong>3. Improve</strong>Refine from real lead behavior.</p></div></div></section>
+<section id="contact" class="contact reveal"><div class="w"><h2>Tell us your biggest website friction point.</h2><p class="lead">We’ll reply with a practical scope path.</p><form onsubmit="event.preventDefault(); window.location.href='contact.html';"><label>Business</label><input required><label>Email</label><input type="email" required><label>Primary goal</label><textarea required></textarea><button class="btn submit" type="submit">Send brief</button></form></div></section>
+<script>const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.2});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));</script>
+</body></html>
